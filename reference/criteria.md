@@ -66,4 +66,4 @@ Foundation models over non-linguistic sequence data are not, however architectur
 
 Entries that fail verification are **removed, not footnoted**.
 
-A list that keeps a disproven entry with an asterisk has decided its own completeness matters more than its accuracy. This one has decided the opposite. If you can show that a listed model was not trained from scratch, that its institution is misattributed, or that it does not exist, please [open a correction]({{ site.aux_links['View on GitHub'][0] }}/issues/new?template=correction.yml) — that is a contribution of exactly the same value as an addition.
+A list that keeps a disproven entry with an asterisk has decided its own completeness matters more than its accuracy. This one has decided the opposite. If you can show that a listed model was not trained from scratch, that its institution is misattributed, or that it does not exist, please [open a correction](https://github.com/Kentucky-Open-Science/native_research_llms/issues/new?template=correction.yml) — that is a contribution of exactly the same value as an addition.

@@ -83,12 +83,12 @@ Only one model on this list departs from left-to-right next-token prediction. Th
 |:--|:--|:--|:--|:--|:--|
 | Sumi | Tohoku University | 7B | Uniform discrete diffusion (UDLM) | Grouped-query, YaRN | SwiGLU |
 
-Sumi builds on generalized interpolating discrete diffusion, letting any token in a sequence be revised at any step rather than committing left to right. It is the first uniform diffusion language model pretrained at this scale, which makes it a reference point for measuring diffusion scaling dynamics against autoregressive baselines. See the [case study](../case-studies/sumi.html).
+Sumi builds on generalized interpolating discrete diffusion, letting any token in a sequence be revised at any step rather than committing left to right. It is the first uniform diffusion language model pretrained at this scale, which makes it a reference point for measuring diffusion scaling dynamics against autoregressive baselines. See the [case study]({% link case-studies/sumi.md %}).
 
 ## What the table shows
 
 **Architecture has converged; the differentiation moved elsewhere.** Nearly every model released since 2024 is a decoder-only transformer with grouped-query attention, rotary embeddings, and SwiGLU. If you sort this table by year, the right-hand columns stop varying.
 
-That convergence is the argument for the list's existence rather than against it. When architecture is a solved commodity, the remaining degrees of freedom are the corpus, the tokenizer, the data ordering, and the training discipline — every one of which is fixed at pretraining time and inherited, unexamined, by anything built on someone else's checkpoint. The [corpora table](corpora.html) is where these models actually differ.
+That convergence is the argument for the list's existence rather than against it. When architecture is a solved commodity, the remaining degrees of freedom are the corpus, the tokenizer, the data ordering, and the training discipline — every one of which is fixed at pretraining time and inherited, unexamined, by anything built on someone else's checkpoint. The [corpora table]({% link reference/corpora.md %}) is where these models actually differ.
 
 **The exceptions are informative.** The models that break the pattern break it deliberately and for stated reasons: Sumi's diffusion objective, OLMo Hybrid's Gated DeltaNet layers, SmallThinker's pre-attention routing for on-device prefetch, ALiBi in the older Nordic and Arabic models that needed length extrapolation before RoPE scaling matured. None of those changes is reachable by fine-tuning.

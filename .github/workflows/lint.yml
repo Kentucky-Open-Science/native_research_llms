@@ -32,14 +32,23 @@ jobs:
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
-          # Every entry must resolve. Hugging Face rate-limits aggressive
-          # crawling, so cap concurrency and retry before failing.
+          # Hugging Face rate-limits aggressive crawling, so cap concurrency and
+          # retry before failing. 429 is accepted because a rate-limited response
+          # still proves the host answered; it does not prove the repo exists, so
+          # see huggingface-urls-to-verify.md for what still needs human eyes.
+          #
+          # Jekyll pages use Liquid tags and .html paths that only resolve after
+          # the Pages build, so lychee checks the GitHub-rendered docs only.
+          # eurollm.io returns 403 to bot user-agents but is live in a browser.
           args: >-
             --no-progress
             --max-concurrency 4
             --retry-wait-time 10
             --max-retries 3
             --accept 200,206,429
+            --exclude 'https://eurollm\.io'
             --exclude-path node_modules
-            './**/*.md'
+            readme.md
+            contributing.md
+            huggingface-urls-to-verify.md
           fail: true

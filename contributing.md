@@ -41,7 +41,7 @@ Causal decoder-only, encoder-decoder, encoder-only, and diffusion language model
 
 ## How to add a model
 
-1. Open the [add-a-model issue](../../issues/new?template=add-model.yml) first if you want to check fit before doing the work.
+1. Open the [add-a-model issue](https://github.com/Kentucky-Open-Science/native_research_llms/issues/new?template=add-model.yml) first if you want to check fit before doing the work.
 2. Fork, then add your entry to the appropriate section of `readme.md`, in alphabetical order within that section.
 3. Match the existing format exactly:
 
@@ -55,7 +55,7 @@ Causal decoder-only, encoder-decoder, encoder-only, and diffusion language model
 
 ## Corrections
 
-Corrections are as welcome as additions, and are reviewed with the same rigor. If a model on this list was **not** actually trained from scratch, please open a [correction issue](../../issues/new?template=correction.yml) with evidence. Entries that fail verification are removed, not quietly footnoted.
+Corrections are as welcome as additions, and are reviewed with the same rigor. If a model on this list was **not** actually trained from scratch, please open a [correction issue](https://github.com/Kentucky-Open-Science/native_research_llms/issues/new?template=correction.yml) with evidence. Entries that fail verification are removed, not quietly footnoted.
 
 ## Quality bar
 

@@ -11,8 +11,8 @@ permalink: /
 Which non-commercial institutions have actually built a foundation model end to end — and what did it take?
 {: .fs-6 .fw-300 }
 
-[The list]({{ site.aux_links['View on GitHub'][0] }}#readme){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[Inclusion criteria](reference/criteria.html){: .btn .fs-5 .mb-4 .mb-md-0 }
+[The list](https://github.com/Kentucky-Open-Science/native_research_llms#readme){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
+[Inclusion criteria]({% link reference/criteria.md %}){: .btn .fs-5 .mb-4 .mb-md-0 }
 
 ---
 
@@ -22,17 +22,17 @@ Foundation model development is dominated by well-funded commercial labs, which 
 
 This registry tracks those models, and only those models.
 
-The defining rule is strict: a model qualifies only if it was trained from a *tabula rasa* state. Continued pretraining on a commercial base — however substantial, however good the resulting model — does not qualify. That rule is what makes the list answer something worth knowing. [Read the reasoning](reference/criteria.html).
+The defining rule is strict: a model qualifies only if it was trained from a *tabula rasa* state. Continued pretraining on a commercial base — however substantial, however good the resulting model — does not qualify. That rule is what makes the list answer something worth knowing. [Read the reasoning]({% link reference/criteria.md %}).
 
 ## Where to start
 
 | If you want | Go to |
 |:---|:---|
-| The list itself, one line per model | [readme]({{ site.aux_links['View on GitHub'][0] }}#readme) |
-| Architecture, attention, positional embeddings, activations | [Architectures](reference/architectures.html) |
-| Corpora, token volumes, tokenizers, compute clusters | [Corpora & compute](reference/corpora.html) |
-| Why a model you expected isn't here | [Inclusion criteria](reference/criteria.html) |
-| Deep dives on notable training runs | [Case studies](case-studies/) |
+| The list itself, one line per model | [readme](https://github.com/Kentucky-Open-Science/native_research_llms#readme) |
+| Architecture, attention, positional embeddings, activations | [Architectures]({% link reference/architectures.md %}) |
+| Corpora, token volumes, tokenizers, compute clusters | [Corpora & compute]({% link reference/corpora.md %}) |
+| Why a model you expected isn't here | [Inclusion criteria]({% link reference/criteria.md %}) |
+| Deep dives on notable training runs | [Case studies]({% link case-studies/index.md %}) |
 
 ## What the data shows
 
@@ -48,7 +48,7 @@ A few patterns are visible once the models are lined up side by side.
 
 Additions and corrections are both welcome, and are held to the same standard: **public, checkable evidence**. Entries that fail verification are removed rather than footnoted.
 
-See [contributing.md]({{ site.aux_links['View on GitHub'][0] }}/blob/main/contributing.md).
+See [contributing.md](https://github.com/Kentucky-Open-Science/native_research_llms/blob/main/contributing.md).
 
 ---
 
