@@ -1,8 +1,15 @@
 name: pages
 
+# Manual-only for now. GitHub Pages cannot be enabled on a private repository
+# without a paid plan, so an automatic push trigger would fail on every commit.
+#
+# When this repo goes public: enable Pages (Settings > Pages > Source: GitHub
+# Actions), then restore the push trigger below.
+#
+#  on:
+#    push:
+#      branches: [main]
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -24,7 +31,8 @@ jobs:
         with:
           ruby-version: '3.2'
           bundler-cache: true
-      - uses: actions/configure-pages@v5
+      - id: pages
+        uses: actions/configure-pages@v5
       - name: Build with Jekyll
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
