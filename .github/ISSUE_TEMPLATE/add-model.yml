@@ -1,0 +1,99 @@
+name: Add a model
+description: Propose a model for the registry
+title: "[Add] "
+labels: ["addition", "needs-verification"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for proposing an addition. This list only accepts models **pretrained from scratch** by academic or non-commercial research institutions. The from-scratch evidence field below is the one we check hardest, so please fill it in carefully.
+
+  - type: input
+    id: name
+    attributes:
+      label: Model name
+      placeholder: e.g. Poro 34B
+    validations:
+      required: true
+
+  - type: input
+    id: institution
+    attributes:
+      label: Lead institution(s)
+      description: The research lead, not hardware or cloud partners.
+      placeholder: e.g. TurkuNLP, University of Turku
+    validations:
+      required: true
+
+  - type: input
+    id: params
+    attributes:
+      label: Parameter count
+      placeholder: e.g. 34.2B (or "8B / 70B" if a family)
+    validations:
+      required: true
+
+  - type: textarea
+    id: links
+    attributes:
+      label: Canonical links
+      description: At least one must resolve publicly.
+      value: |
+        - Hugging Face:
+        - GitHub:
+        - Paper (arXiv/DOI):
+        - Project page:
+    validations:
+      required: true
+
+  - type: textarea
+    id: from-scratch
+    attributes:
+      label: Evidence of from-scratch pretraining
+      description: >
+        Link to the specific paper section, model card statement, or training config showing the model was initialized with random weights. A model continued-pretrained from Llama, Mistral, Qwen, or any other existing checkpoint does not qualify, no matter how many tokens it saw afterward.
+      placeholder: |
+        e.g. "Paper §3.1: 'We train from scratch using randomly initialized weights...'
+        https://arxiv.org/abs/XXXX.XXXXX"
+    validations:
+      required: true
+
+  - type: input
+    id: description
+    attributes:
+      label: Proposed one-sentence description
+      description: Factual and neutral, roughly 15-25 words. No marketing language.
+      placeholder: e.g. Finnish-English bilingual model trained on LUMI, using a custom tokenizer to handle Finnish morphology.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: section
+    attributes:
+      label: Suggested section
+      options:
+        - Fully Open and Reproducible
+        - Multilingual and Regional
+        - Biomedical and Clinical
+        - Scientific
+        - Code
+        - Small and Efficient
+        - Alternative Objectives
+        - Not sure
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: criteria
+    attributes:
+      label: Criteria check
+      description: Please confirm each. See [contributing.md](../blob/main/contributing.md).
+      options:
+        - label: The model was pretrained from randomly initialized weights, not warm-started from an existing checkpoint.
+          required: true
+        - label: The pretraining run was led by a university, non-profit research institute, national lab, or public research consortium.
+          required: true
+        - label: At least one link above resolves publicly and is not a private document.
+          required: true
+        - label: It is a language model (not a genomics, imaging, or protein model).
+          required: true

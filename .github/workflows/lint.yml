@@ -1,0 +1,45 @@
+name: lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Weekly link rot check — Mondays at 06:00 UTC.
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  awesome-lint:
+    name: awesome-lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run awesome-lint
+        run: npx --yes awesome-lint
+
+  links:
+    name: link check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Every entry must resolve. Hugging Face rate-limits aggressive
+          # crawling, so cap concurrency and retry before failing.
+          args: >-
+            --no-progress
+            --max-concurrency 4
+            --retry-wait-time 10
+            --max-retries 3
+            --accept 200,206,429
+            --exclude-path node_modules
+            './**/*.md'
+          fail: true

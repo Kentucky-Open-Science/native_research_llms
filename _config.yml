@@ -1,0 +1,58 @@
+title: Native Research LLMs
+description: >-
+  A registry of large language models pretrained from scratch by universities,
+  non-profit research institutes, and national laboratories.
+url: "https://kentucky-open-science.github.io"
+baseurl: "/native_research_llms"
+
+theme: just-the-docs
+
+# The readme is the canonical list and is rendered by GitHub itself. The Pages
+# site carries the reference tables and case studies that don't fit awesome's
+# one-line-per-entry format. readme.md is excluded so Jekyll doesn't render a
+# second copy at /readme/ and split inbound links.
+exclude:
+  - readme.md
+  - contributing.md
+  - code-of-conduct.md
+  - license
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - .github
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+aux_links:
+  "View on GitHub":
+    - "https://github.com/Kentucky-Open-Science/native_research_llms"
+
+aux_links_new_tab: true
+
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 3
+
+heading_anchors: true
+
+color_scheme: light
+
+nav_external_links:
+  - title: The list (readme)
+    url: https://github.com/Kentucky-Open-Science/native_research_llms#readme
+    hide_icon: false
+
+footer_content: >-
+  Released under
+  <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>.
+  Corrections welcome — every entry on this list is meant to be falsifiable.
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap

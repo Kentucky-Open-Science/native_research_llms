@@ -1,0 +1,49 @@
+name: Correction
+description: Report an inaccurate entry, a dead link, or a model that should not be listed
+title: "[Correction] "
+labels: ["correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Corrections are as valuable as additions. If an entry on this list is wrong, we want to fix it — including by removing it.
+
+  - type: input
+    id: entry
+    attributes:
+      label: Which entry?
+      placeholder: e.g. Poro 34B
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of problem?
+      options:
+        - Not actually pretrained from scratch
+        - Wrong institution or attribution
+        - Wrong parameter count / token volume / hardware
+        - Dead or incorrect link
+        - Model does not appear to exist publicly
+        - Lead is commercial, not academic
+        - Not a language model
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: correction
+    attributes:
+      label: What is wrong, and what is correct?
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: >
+        Public, checkable sources please. Private documents, internal reports, and personal correspondence cannot be used to verify or refute an entry.
+    validations:
+      required: true
