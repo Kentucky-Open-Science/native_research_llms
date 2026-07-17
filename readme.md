@@ -1,6 +1,6 @@
-# Awesome Academic LLMs [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# The Academic Foundation Model Index (AFMI) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-> Large language models pretrained from scratch by universities — with research institutes, national labs, and public consortia tracked alongside.
+> An index of foundation models trained natively — from scratch, on their own data and tokenizer — by academic and research institutions. Universities come first; research institutes, national labs, and public consortia are tracked alongside.
 
 Foundation model development is dominated by well-funded commercial labs, and data opacity, licensing constraints, and architectural gatekeeping come with it. In response, universities and other public institutions have pretrained large language models from a *tabula rasa* state — random weights, own corpus, own tokenizer, auditable end to end.
 
