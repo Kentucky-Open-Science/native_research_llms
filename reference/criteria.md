@@ -39,14 +39,16 @@ That question matters because the interesting properties of a model — data pro
 
 ## The institutional rule
 
-The pretraining run must be led by a university, a non-profit research institute, a national laboratory, or a public research consortium.
+**Academic means a university.** The first list is universities only — the question the registry exists to answer is *which universities have built a foundation model end to end*.
 
-The boundary here is genuinely fuzzy, and this list resolves ambiguity case by case rather than pretending a bright line exists:
+Everything else non-commercial is tracked too, but in separate sections and not labeled "academic":
 
-- **MBZUAI** is a degree-granting university whose models ship with commercial partners (Inception, Cerebras, Petuum). Listed.
-- **Ai2** and **EleutherAI** are non-profits, not universities. Listed — excluding them would cut the most reproducible open models in existence while admitting far less rigorous university one-offs, which would make the list worse at the thing it is for.
-- **Barcelona Supercomputing Center** and **NII** are national research institutes. Listed.
-- **Corporate research divisions** are excluded, even when they publish excellent papers and release open weights. FAIR, Microsoft Research, and NVIDIA Research are not in scope.
+- **Universities** — the academic list. Degree-granting universities. MBZUAI, Instituto Superior Técnico, CentraleSupélec, SUTD, SJTU, EPFL, ETH Zürich, Sapienza, and the rest all count. A commercial co-developer does **not** move a university off this list — the partner is recorded inline as a tag, not a demotion.
+- **Research institutes and national labs** — a separate section. Non-profit research institutes, national laboratories, government research institutes, and foundations: Ai2, EleutherAI, BAAI, TII, NII, SDAIA, AI Singapore, Shanghai AI Lab, Oak Ridge, the Barcelona Supercomputing Center, and the like. These do serious from-scratch work — Ai2's OLMo and EleutherAI's Pythia are among the most reproducible models in existence — but they are **not universities**, so they are not on the academic list.
+- **Public research consortia** — a third section. Named multi-party public efforts: BigScience, OpenGPT-X, the EuroHPC projects.
+- **Corporate research divisions** are excluded entirely, even when they publish excellent papers and release open weights. FAIR, Microsoft Research, and NVIDIA Research are not in scope.
+
+Using commercial cloud or vendor hardware does not change who led a run; leadership does, not the invoice.
 
 ## The public-evidence rule
 
@@ -54,7 +56,13 @@ Every entry needs at least one canonical, resolving public link.
 
 Private documents, internal reports, unlisted Drive files, and personal correspondence cannot establish an entry. This is not bureaucratic caution. A registry whose claims cannot be checked is not a registry, it is an assertion — and the failure mode is specific: unverifiable entries tend to carry the *most* impressive-sounding detail, because nothing constrains them.
 
-**Gated weights are acceptable** when the gate is documented and the model is otherwise publicly described. GatorTronGPT cannot release raw weights trained on protected health information without risking re-identification of patients; that is a legitimate constraint, not evasion, and the model is thoroughly documented in the literature. Gated entries are marked as such.
+## The verified-weights and scale rules
+
+A verified entry has **openly downloadable weights** and roughly **1B or more parameters**.
+
+Weights that are gated behind approval, region-locked, or never released do not meet the bar. Nor does a sub-1B research prototype, however influential — the reference implementations of alternative architectures often land here. Neither is *disqualifying*: a model that clears the from-scratch rule but misses one of these lands on the [unverified candidates]({% link unverified.md %}) list, held until the blocking condition changes. That is a different fate from a from-scratch failure, which is removed outright.
+
+The one exception to open weights is a documented **data-protection** constraint. GatorTronGPT cannot release raw weights trained on protected health information without risking re-identification of patients; that PHI gate is a legitimate constraint, not evasion, and the model is thoroughly documented in the literature, so it stays on the verified list, marked as such. The exception is narrow — it covers legally protected training data, not ordinary access controls.
 
 ## The language-model rule
 

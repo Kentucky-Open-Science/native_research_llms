@@ -51,4 +51,6 @@ Because the team released weights, checkpoints, and complete training specificat
 
 - Paper: [Sumi: Open Uniform Diffusion Language Model from Scratch](https://arxiv.org/abs/2606.19005) (arXiv 2606.19005)
 - Project page: [Tohoku NLP Group](https://www.nlp.ecei.tohoku.ac.jp/projects/sumi/)
+- Weights: [tohoku-nlp/sumi-7b](https://huggingface.co/tohoku-nlp/sumi-7b) (Apache 2.0), collected under the [tohoku-nlp/sumi](https://huggingface.co/collections/tohoku-nlp/sumi) collection
+- Code: [tohoku-nlp/sumi](https://github.com/tohoku-nlp/sumi)
 - Authors: Mengyu Ye, Keito Kudo, Wataru Ikeda, Ryosuke Matsuda, Keisuke Sakaguchi, Jun Suzuki

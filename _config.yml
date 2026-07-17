@@ -16,6 +16,9 @@ exclude:
   - contributing.md
   - code-of-conduct.md
   - license
+  # Maintenance record, GitHub-facing only — not a site page (no front matter,
+  # no nav entry). Kept in the repo and link-checked by CI, excluded from Pages.
+  - huggingface-urls-to-verify.md
   - Gemfile
   - Gemfile.lock
   - vendor

@@ -8,10 +8,11 @@ permalink: /
 # Academic & Research LLMs
 {: .fs-9 }
 
-Which non-commercial institutions have actually built a foundation model end to end — and what did it take?
+Which universities have actually built a foundation model end to end — and how do they measure up to GPT-3.5?
 {: .fs-6 .fw-300 }
 
 [The list](https://github.com/Kentucky-Open-Science/native_research_llms#readme){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
+[Rankings]({% link rankings.md %}){: .btn .fs-5 .mb-4 .mb-md-0 .mr-2 }
 [Inclusion criteria]({% link reference/criteria.md %}){: .btn .fs-5 .mb-4 .mb-md-0 }
 
 ---
@@ -20,7 +21,7 @@ Which non-commercial institutions have actually built a foundation model end to 
 
 Foundation model development is dominated by well-funded commercial labs, which brings data opacity, licensing constraints, and architectural gatekeeping along with it. In response, a number of universities, national labs, and non-profit research consortia have pretrained large language models **from scratch** — random weights, own data, own tokenizer, full pipeline auditability.
 
-This registry tracks those models, and only those models.
+This registry tracks those models, and only those models. **Academic means a university** — universities come first, with research institutes, national labs, and public consortia tracked in separate sections below the academic list.
 
 The defining rule is strict: a model qualifies only if it was trained from a *tabula rasa* state. Continued pretraining on a commercial base — however substantial, however good the resulting model — does not qualify. That rule is what makes the list answer something worth knowing. [Read the reasoning]({% link reference/criteria.md %}).
 
@@ -29,9 +30,11 @@ The defining rule is strict: a model qualifies only if it was trained from a *ta
 | If you want | Go to |
 |:---|:---|
 | The list itself, one line per model | [readme](https://github.com/Kentucky-Open-Science/native_research_llms#readme) |
+| How universities rank on IFEval vs GPT-3.5 | [Rankings]({% link rankings.md %}) |
 | Architecture, attention, positional embeddings, activations | [Architectures]({% link reference/architectures.md %}) |
 | Corpora, token volumes, tokenizers, compute clusters | [Corpora & compute]({% link reference/corpora.md %}) |
 | Why a model you expected isn't here | [Inclusion criteria]({% link reference/criteria.md %}) |
+| From-scratch models that miss a verified bar | [Unverified candidates]({% link unverified.md %}) |
 | Deep dives on notable training runs | [Case studies]({% link case-studies/index.md %}) |
 
 ## What the data shows

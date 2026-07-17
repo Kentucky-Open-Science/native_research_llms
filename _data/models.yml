@@ -1,0 +1,136 @@
+# ---------------------------------------------------------------------------
+# Master roster — single source of truth for list membership.
+# Organized by INSTITUTION TYPE (primary axis), per the rulings of 2026-07-17.
+#
+# academic  = a UNIVERSITY. Full stop. This is the first/headline list.
+# A commercial co-developer does NOT move a university model off this list; it
+# is recorded as `partner:` (a tag). MBZUAI, IST, CentraleSupélec, SUTD, SJTU
+# etc. are degree-granting universities and count.
+#
+# research_institute = non-profit institutes, national labs, government research
+# institutes, and foundations. In the registry, but NOT academic and never first.
+# (Ai2, EleutherAI, BAAI, TII, NII, SDAIA, AI Singapore, Shanghai AI Lab, ORNL,
+#  BSC, HUN-REN, RWKV Foundation, plus M-A-P and the Tsinghua+BAAI CPM effort.)
+#
+# consortium = named multi-party public research consortia.
+# unverified = fails a verified requirement (kept, not tossed).
+#
+# Verified requirement: from-scratch + open downloadable weights + >=~1B params
+#   + generative. Exception: PHI/PII data-protection gating (GatorTronGPT).
+# weights: open | open-nc | phi-gate-exception | gated-approval | region-locked
+#          | unreleased | private
+# ---------------------------------------------------------------------------
+
+meta:
+  updated: "2026-07-17"
+  decisions:
+    academic_definition: "Academic = a university. Non-profit research institutes, national labs, government institutes, and think tanks are NOT academic (corrects the repo's original criteria that listed Ai2/EleutherAI as academic)."
+    primary_axis: "Institution type. Universities first, then research institutes & national labs, then consortia. Commercial-partner status is a tag, not a top-level split."
+    borderline: "MAP-Neo (M-A-P collective) and CPM-1 (Tsinghua + BAAI) are classified NON-university → research_institute."
+    gatortrongpt: "Kept (university, U Florida) via a documented PHI data-protection exception to the open-weights rule."
+    gated_weights: "Unavailable weights = not verified: GPT-SW3, Fanar Star, NorGPT → unverified."
+
+# =========================================================================
+# UNIVERSITIES — the academic list (first). partner: = commercial co-developer.
+# =========================================================================
+university:
+  # --- fully open and reproducible ---
+  - { name: Marin 8B, inst: "Stanford", theme: fully-open, params: "8B, 32B", weights: open, link: "https://github.com/marin-community/marin" }
+  - { name: OpenLLaMA, inst: "UC Berkeley (OpenLM Research)", theme: fully-open, params: "3B, 7B, 13B", weights: open, link: "https://huggingface.co/openlm-research/open_llama_7b" }
+  - { name: DCLM-7B, inst: "University of Washington, ML Foundations", theme: fully-open, params: "6.9B", weights: open, partner: "Apple", note: "Apple Sample Code License", link: "https://github.com/mlfoundations/dclm" }
+  - { name: FinGPT, inst: "TurkuNLP (University of Turku)", theme: fully-open, params: "186M–13B", weights: open, link: "https://turkunlp.org/gpt3-finnish" }
+  - { name: Tucano, inst: "University of Bonn", theme: fully-open, params: "160M–2.4B", weights: open, link: "https://github.com/Nkluge-correa/Tucano" }
+  - { name: LLM360 Amber, inst: "MBZUAI", theme: fully-open, params: "6.7B", weights: open, partner: "Petuum", link: "https://huggingface.co/LLM360/Amber" }
+  - { name: LLM360 Crystal, inst: "MBZUAI", theme: fully-open, params: "6.7B", weights: open, partner: "Petuum, Cerebras", link: "https://huggingface.co/LLM360/Crystal" }
+  - { name: LLM360 K2, inst: "MBZUAI", theme: fully-open, params: "65B", weights: open, partner: "Petuum", link: "https://huggingface.co/LLM360/K2" }
+  - { name: LLM360 K2-V2, inst: "MBZUAI", theme: fully-open, params: "70B", weights: open, partner: "Petuum", link: "https://huggingface.co/LLM360/K2-V2" }
+  # --- multilingual and regional ---
+  - { name: Apertus, inst: "EPFL, ETH Zürich", theme: multilingual, params: "8B, 70B", weights: open, partner: "CSCS (compute)", link: "https://huggingface.co/swiss-ai/Apertus-8B-2509" }
+  - { name: Minerva, inst: "Sapienza University of Rome", theme: multilingual, params: "350M–7B", weights: open, link: "https://nlp.uniroma1.it/minerva/" }
+  - { name: weblab-10b, inst: "University of Tokyo (Matsuo Lab)", theme: multilingual, params: "10B", weights: open-nc, link: "https://huggingface.co/matsuo-lab/weblab-10b" }
+  - { name: Tanuki, inst: "University of Tokyo (Matsuo Lab)", theme: multilingual, params: "8B, 8x8B MoE", weights: open, partner: "GENIAC community", link: "https://huggingface.co/weblab-GENIAC/Tanuki-8x8B-dpo-v1.0" }
+  - { name: LLäMmlein, inst: "University of Würzburg", theme: multilingual, params: "1B, 7B", weights: open-nc, link: "https://huggingface.co/LSX-UniWue/LLaMmlein_1B" }
+  - { name: YuLan-Base-12B, inst: "Renmin University of China", theme: multilingual, params: "12B", weights: open, link: "https://github.com/RUC-GSAI/YuLan-Chat" }
+  - { name: AraGPT2, inst: "American University of Beirut", theme: multilingual, params: "135M–1.46B", weights: open, note: "custom license unconfirmed", link: "https://github.com/aub-mind/arabert" }
+  - { name: CroissantLLM, inst: "CentraleSupélec", theme: multilingual, params: "1.3B", weights: open, partner: "Illuin Technology", link: "https://huggingface.co/croissantllm/CroissantLLMBase" }
+  - { name: Fugaku-LLM, inst: "Tokyo Institute of Technology, Tohoku University", theme: multilingual, params: "13B", weights: open, partner: "Fujitsu, RIKEN", link: "https://huggingface.co/Fugaku-LLM/Fugaku-LLM-13B" }
+  - { name: Jais, inst: "MBZUAI", theme: multilingual, params: "13B", weights: open, partner: "Inception, Cerebras", link: "https://huggingface.co/inceptionai/jais-13b" }
+  - { name: Jais 2, inst: "MBZUAI", theme: multilingual, params: "8B, 70B", weights: open, partner: "Inception", link: "https://huggingface.co/inceptionai/Jais-2-70B-Chat" }
+  - { name: Poro 34B, inst: "TurkuNLP (University of Turku)", theme: multilingual, params: "34B", weights: open, partner: "Silo AI", link: "https://huggingface.co/LumiOpen/Poro-34B" }
+  - { name: Viking, inst: "TurkuNLP (University of Turku)", theme: multilingual, params: "7B, 13B, 33B", weights: open, partner: "Silo AI", link: "https://huggingface.co/LumiOpen/Viking-33B" }
+  # --- biomedical and clinical ---
+  - { name: BioMedLM, inst: "Stanford (CRFM)", theme: biomedical, params: "2.7B", weights: open, partner: "MosaicML (compute)", note: "BLOOM RAIL license", link: "https://huggingface.co/stanford-crfm/BioMedLM" }
+  - { name: GatorTronGPT, inst: "University of Florida", theme: biomedical, params: "5B, 20B", weights: phi-gate-exception, note: "weights gated for PHI provenance; open proxy is 345M GatorTronS", link: "https://github.com/uf-hobi-informatics-lab/GatorTronGPT" }
+  # --- small and efficient ---
+  - { name: TinyLlama-1.1B, inst: "Singapore Univ. of Technology and Design", theme: small, params: "1.1B", weights: open, link: "https://github.com/jzhang38/TinyLlama" }
+  - { name: YuLan-Mini, inst: "Renmin University of China", theme: small, params: "2.4B", weights: open, link: "https://github.com/RUC-GSAI/YuLan-Mini" }
+  - { name: SmallThinker, inst: "Shanghai Jiao Tong University", theme: small, params: "4B, 21B MoE", weights: open, partner: "Zenergize AI", link: "https://github.com/SJTU-IPADS/SmallThinker" }
+  # --- alternative architectures and objectives ---
+  - { name: Sumi, inst: "Tohoku University", theme: alternative, params: "7B", weights: open, note: "uniform diffusion", link: "https://huggingface.co/tohoku-nlp/sumi-7b" }
+  - { name: Mamba, inst: "Carnegie Mellon, Princeton", theme: alternative, params: "130M–2.8B", weights: open, note: "selective SSM (Mamba + Mamba-2)", link: "https://github.com/state-spaces/mamba" }
+  - { name: H3, inst: "Stanford (Hazy Research)", theme: alternative, params: "125M–2.7B", weights: open, note: "SSM precursor to Mamba", link: "https://huggingface.co/danfu09/H3-1.3B" }
+  - { name: Based, inst: "Stanford (Hazy Research)", theme: alternative, params: "up to 1.4B", weights: open, note: "linear + sliding-window attention", link: "https://huggingface.co/hazyresearch/based-1b" }
+  - { name: Plaid, inst: "Stanford", theme: alternative, params: "~1B", weights: open, note: "continuous diffusion; license gap", link: "https://github.com/igul222/plaid" }
+  - { name: LLaDA, inst: "Renmin University of China", theme: alternative, params: "8B", weights: open, partner: "Ant Group", note: "masked diffusion; largest academic diffusion LM", link: "https://huggingface.co/GSAI-ML/LLaDA-8B-Base" }
+  - { name: GLA, inst: "MIT", theme: alternative, params: "1.3B, 2.7B", weights: open, partner: "MIT-IBM Watson AI Lab", note: "gated linear attention", link: "https://huggingface.co/fla-hub/gla-2.7B-100B" }
+
+# =========================================================================
+# RESEARCH INSTITUTES & NATIONAL LABS — in the mix, NOT academic.
+# type: nonprofit | national-lab | gov-institute | foundation | collective
+# =========================================================================
+research_institute:
+  # --- fully open and reproducible ---
+  - { name: Pythia, inst: "EleutherAI", type: nonprofit, theme: fully-open, params: "70M–12B", weights: open, link: "https://github.com/EleutherAI/pythia" }
+  - { name: GPT-NeoX-20B, inst: "EleutherAI", type: nonprofit, theme: fully-open, params: "20B", weights: open, link: "https://huggingface.co/EleutherAI/gpt-neox-20b" }
+  - { name: GPT-J-6B, inst: "EleutherAI", type: nonprofit, theme: fully-open, params: "6B", weights: open, link: "https://huggingface.co/EleutherAI/gpt-j-6b" }
+  - { name: OLMo 3, inst: "Ai2", type: nonprofit, theme: fully-open, params: "7B, 32B", weights: open, link: "https://huggingface.co/allenai/Olmo-3-1125-32B" }
+  - { name: OLMo 2, inst: "Ai2", type: nonprofit, theme: fully-open, params: "7B, 13B, 32B", weights: open, link: "https://huggingface.co/allenai/OLMo-2-1124-7B" }
+  - { name: OLMo (v1), inst: "Ai2", type: nonprofit, theme: fully-open, params: "1B, 7B", weights: open, link: "https://huggingface.co/allenai/OLMo-7B" }
+  - { name: OLMo Hybrid 7B, inst: "Ai2", type: nonprofit, theme: fully-open, params: "7B", weights: open, link: "https://huggingface.co/allenai/Olmo-Hybrid-7B" }
+  - { name: MAP-Neo 7B, inst: "M-A-P (+ University of Waterloo)", type: collective, theme: fully-open, params: "7B", weights: open, note: "no license file despite MIT claim", link: "https://github.com/multimodal-art-projection/MAP-NEO" }
+  - { name: FORGE, inst: "Oak Ridge National Laboratory", type: national-lab, theme: fully-open, params: "1.4B–22.4B", weights: open, note: "no license file on weights", link: "https://github.com/at-aaims/forge" }
+  # --- multilingual and regional ---
+  - { name: Polyglot-Ko, inst: "EleutherAI", type: nonprofit, theme: multilingual, params: "1.3B–12.8B", weights: open, link: "https://huggingface.co/EleutherAI/polyglot-ko-12.8b" }
+  - { name: Aquila2, inst: "BAAI", type: nonprofit, theme: multilingual, params: "7B, 34B, 70B", weights: open, note: "custom BAAI license", link: "https://github.com/FlagAI-Open/Aquila2" }
+  - { name: CPM-1, inst: "Tsinghua + BAAI", type: nonprofit, theme: multilingual, params: "2.6B", weights: open, link: "https://github.com/TsinghuaAI/CPM-Generate" }
+  - { name: Salamandra, inst: "Barcelona Supercomputing Center", type: national-lab, theme: multilingual, params: "2B, 7B, 40B", weights: open, link: "https://huggingface.co/BSC-LT/salamandra-7b" }
+  - { name: "PULI GPT-3SX", inst: "HUN-REN (Hungarian Research Centre for Linguistics)", type: gov-institute, theme: multilingual, params: "6.7B", weights: open, link: "https://huggingface.co/NYTK/PULI-GPT-3SX" }
+  - { name: LLM-jp-3, inst: "National Institute of Informatics (NII)", type: gov-institute, theme: multilingual, params: "1.8B–13B", weights: open, link: "https://huggingface.co/llm-jp/llm-jp-3-13b" }
+  - { name: LLM-jp-4, inst: "National Institute of Informatics (NII)", type: gov-institute, theme: multilingual, params: "8.6B, 32B MoE", weights: open, link: "https://www.nii.ac.jp/en/news/release/2026/0403.html" }
+  - { name: ALLaM-7B, inst: "SDAIA / NCAI (Saudi Arabia)", type: gov-institute, theme: multilingual, params: "7B", weights: open, link: "https://huggingface.co/humain-ai/ALLaM-7B-Instruct-preview" }
+  - { name: Falcon, inst: "TII (Abu Dhabi)", type: gov-institute, theme: multilingual, params: "7B, 40B, 180B", weights: open, link: "https://huggingface.co/tiiuae/falcon-40b" }
+  - { name: SEA-LION v1, inst: "AI Singapore", type: gov-institute, theme: multilingual, params: "3B, 7B", weights: open, link: "https://huggingface.co/aisingapore/SEA-LION-v1-7B" }
+  - { name: InternLM2, inst: "Shanghai AI Laboratory", type: gov-institute, theme: multilingual, params: "1.8B, 7B, 20B", weights: open, partner: "SenseTime", link: "https://github.com/InternLM/InternLM" }
+  - { name: Lucie-7B, inst: "CNRS, CEA (OpenLLM-France)", type: national-lab, theme: multilingual, params: "7B", weights: open, partner: "LINAGORA (coordinator)", link: "https://huggingface.co/OpenLLM-France/Lucie-7B" }
+  # --- small and efficient ---
+  - { name: InternLM3-8B, inst: "Shanghai AI Laboratory", type: gov-institute, theme: small, params: "8B", weights: open, link: "https://huggingface.co/internlm/internlm3-8b-instruct" }
+  # --- alternative architectures and objectives ---
+  - { name: RWKV, inst: "RWKV Foundation (Linux Foundation)", type: foundation, theme: alternative, params: "up to 14B", weights: open, note: "individual-led linear RNN", link: "https://huggingface.co/RWKV" }
+
+# =========================================================================
+# PUBLIC RESEARCH CONSORTIA — named multi-party public efforts.
+# =========================================================================
+consortium:
+  - { name: BLOOM, consortium: "BigScience (1000+ researchers)", theme: multilingual, params: "560M–176B", weights: open, note: "BigScience RAIL license", link: "https://huggingface.co/bigscience/bloom" }
+  - { name: EuroLLM, consortium: "EU / EuroHPC (IST, Unbabel, Edinburgh)", theme: multilingual, params: "1.7B, 9B, 22B", weights: open, link: "https://eurollm.io/" }
+  - { name: HPLT models, consortium: "HPLT (Horizon Europe)", theme: multilingual, params: "2.15B", weights: open, link: "https://github.com/hplt-project" }
+  - { name: Teuken-7B, consortium: "OpenGPT-X (Fraunhofer, TU Dresden, Jülich; IONOS, Aleph Alpha)", theme: multilingual, params: "7B", weights: open, link: "https://huggingface.co/openGPT-X/Teuken-7B-instruct-research-v0.4" }
+
+# =========================================================================
+# UNVERIFIED — passes from-scratch but misses a verified requirement.
+# =========================================================================
+unverified:
+  - { name: GPT-SW3, inst: "AI Sweden, RISE", was: multilingual, params: "126M–40B", weights: gated-approval, reason: "No open download; access by application only." }
+  - { name: NorGPT, inst: "NTNU", was: multilingual, params: "369M, 3B, 23B", weights: region-locked, reason: "Nordic organizations and students only." }
+  - { name: Fanar Star, inst: "QCRI, HBKU", was: multilingual, params: "7B", weights: unreleased, reason: "Weights never released; open Fanar-1-9B is Gemma-derived." }
+  - { name: GLM-130B, inst: "Tsinghua KEG", was: multilingual, params: "130B", weights: gated-approval, reason: "From-scratch, but weights application-gated." }
+  - { name: AuroraGPT, inst: "Argonne National Laboratory", was: fully-open, params: "7B, 70B", weights: private, reason: "DOE from-scratch base, but repo private; no open weights yet." }
+  - { name: TeenyTinyLlama, inst: "PUCRS, University of Bonn", was: small, params: "160M, 460M", weights: open, reason: "Below the ~1B parameter floor." }
+  - { name: SEDD, inst: "Stanford", was: alternative, params: "90M, 320M", weights: open, reason: "Below floor (discrete diffusion)." }
+  - { name: MDLM, inst: "Cornell", was: alternative, params: "~170M", weights: open, reason: "Below floor (masked diffusion)." }
+  - { name: UDLM, inst: "Cornell", was: alternative, params: "~139M", weights: open, reason: "Below floor (uniform diffusion)." }
+  - { name: Hyena, inst: "Stanford, Mila", was: alternative, params: "153M released", weights: open, reason: "Only a 153M checkpoint is public." }
+  - { name: Diffusion-LM, inst: "Stanford", was: alternative, params: "~80M", weights: open, reason: "Toy-scale proof of concept." }
+  - { name: EuroBERT, inst: "CentraleSupélec, IST", was: multilingual, params: "210M–2.1B", weights: open, reason: "Encoder-only (MLM); excluded from verified." }
+  - { name: SciBERT, inst: "Allen Institute for AI", was: biomedical, params: "~110M", weights: open, reason: "Encoder-only + below floor." }
+  - { name: WangchanBERTa, inst: "VISTEC", was: multilingual, params: "~105M", weights: open, reason: "Encoder-only + below floor." }
