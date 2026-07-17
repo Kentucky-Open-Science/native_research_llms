@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------
-# Master roster — single source of truth for list membership.
+# Master roster, single source of truth for list membership.
 # Organized by INSTITUTION TYPE (primary axis), per the rulings of 2026-07-17.
 #
 # academic  = a UNIVERSITY. Full stop. This is the first/headline list.
@@ -31,7 +31,7 @@ meta:
     gated_weights: "Unavailable weights = not verified: GPT-SW3, Fanar Star, NorGPT → unverified."
 
 # =========================================================================
-# UNIVERSITIES — the academic list (first). partner: = commercial co-developer.
+# UNIVERSITIES, the academic list (first). partner: = commercial co-developer.
 # =========================================================================
 university:
   # --- fully open and reproducible ---
@@ -59,6 +59,7 @@ university:
   - { name: Poro 34B, inst: "TurkuNLP (University of Turku)", theme: multilingual, params: "34B", weights: open, partner: "Silo AI", link: "https://huggingface.co/LumiOpen/Poro-34B" }
   - { name: Viking, inst: "TurkuNLP (University of Turku)", theme: multilingual, params: "7B, 13B, 33B", weights: open, partner: "Silo AI", link: "https://huggingface.co/LumiOpen/Viking-33B" }
   # --- biomedical and clinical ---
+  - { name: KOS-V4, inst: "University of Kentucky", theme: biomedical, params: "3B", weights: open-nc, note: "from-scratch clinical decoder (base KOS-V4-Base, 180B tokens, 24 GPUs); Instruct variant IFEval strict-avg 61.6, clears GPT-3.5; CC BY-NC-SA research-only", link: "https://huggingface.co/Kentucky-Open-Science/KOS-V4-Instruct" }
   - { name: BioMedLM, inst: "Stanford (CRFM)", theme: biomedical, params: "2.7B", weights: open, partner: "MosaicML (compute)", note: "BLOOM RAIL license", link: "https://huggingface.co/stanford-crfm/BioMedLM" }
   - { name: GatorTronGPT, inst: "University of Florida", theme: biomedical, params: "5B, 20B", weights: phi-gate-exception, note: "weights gated for PHI provenance; open proxy is 345M GatorTronS", link: "https://github.com/uf-hobi-informatics-lab/GatorTronGPT" }
   # --- small and efficient ---
@@ -75,7 +76,7 @@ university:
   - { name: GLA, inst: "MIT", theme: alternative, params: "1.3B, 2.7B", weights: open, partner: "MIT-IBM Watson AI Lab", note: "gated linear attention", link: "https://huggingface.co/fla-hub/gla-2.7B-100B" }
 
 # =========================================================================
-# RESEARCH INSTITUTES & NATIONAL LABS — in the mix, NOT academic.
+# RESEARCH INSTITUTES & NATIONAL LABS, in the mix, NOT academic.
 # type: nonprofit | national-lab | gov-institute | foundation | collective
 # =========================================================================
 research_institute:
@@ -108,7 +109,7 @@ research_institute:
   - { name: RWKV, inst: "RWKV Foundation (Linux Foundation)", type: foundation, theme: alternative, params: "up to 14B", weights: open, note: "individual-led linear RNN", link: "https://huggingface.co/RWKV" }
 
 # =========================================================================
-# PUBLIC RESEARCH CONSORTIA — named multi-party public efforts.
+# PUBLIC RESEARCH CONSORTIA, named multi-party public efforts.
 # =========================================================================
 consortium:
   - { name: BLOOM, consortium: "BigScience (1000+ researchers)", theme: multilingual, params: "560M–176B", weights: open, note: "BigScience RAIL license", link: "https://huggingface.co/bigscience/bloom" }
@@ -117,7 +118,7 @@ consortium:
   - { name: Teuken-7B, consortium: "OpenGPT-X (Fraunhofer, TU Dresden, Jülich; IONOS, Aleph Alpha)", theme: multilingual, params: "7B", weights: open, link: "https://huggingface.co/openGPT-X/Teuken-7B-instruct-research-v0.4" }
 
 # =========================================================================
-# UNVERIFIED — passes from-scratch but misses a verified requirement.
+# UNVERIFIED, passes from-scratch but misses a verified requirement.
 # =========================================================================
 unverified:
   - { name: GPT-SW3, inst: "AI Sweden, RISE", was: multilingual, params: "126M–40B", weights: gated-approval, reason: "No open download; access by application only." }

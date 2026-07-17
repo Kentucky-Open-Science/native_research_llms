@@ -9,7 +9,7 @@ REQUIRED for new entries. Link to the specific paper section, model card stateme
 or training config demonstrating random initialization.
 
 A model continued-pretrained from an existing checkpoint does not qualify, regardless
-of how many tokens it subsequently saw. If you're unsure, say so — we'd rather discuss
+of how many tokens it subsequently saw. If you're unsure, say so, we'd rather discuss
 it than get it wrong.
 -->
 

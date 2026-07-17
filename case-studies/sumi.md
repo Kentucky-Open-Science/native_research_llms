@@ -23,7 +23,7 @@ Tohoku University's 7B departure from left-to-right generation.
 
 That absence is the point. Autoregressive decoders commit to tokens left to right and cannot revisit them. A uniform diffusion model allows any token in a sequence to be revised at any step, which makes generation adaptive rather than strictly sequential. Whether that property survives contact with scale was, before Sumi, an open empirical question with no reference point.
 
-It is also a change **no fine-tune can reach**. The training objective is fixed at pretraining time. You cannot adapt a causal decoder into a diffusion model by feeding it more data, at any budget. If the alternative is going to be evaluated at 7B at all, someone has to spend a full pretraining run finding out — and the institution that did was a university NLP group, not a commercial lab with a product to ship.
+It is also a change **no fine-tune can reach**. The training objective is fixed at pretraining time. You cannot adapt a causal decoder into a diffusion model by feeding it more data, at any budget. If the alternative is going to be evaluated at 7B at all, someone has to spend a full pretraining run finding out, and the institution that did was a university NLP group, not a commercial lab with a product to ship.
 
 ## The training run
 
@@ -37,7 +37,7 @@ Pretraining ran in three sequential stages:
 
 The corpus is the English portion of llm-jp-corpus-v4, notably **excluding FineWeb subsets** in favor of documents rescored with an educational classifier distilled from Qwen3-32B annotations. A single Warmup-Stable-Decay learning rate schedule spans the whole pipeline, with an auxiliary loss term maintaining gradient stability.
 
-The staging is worth reading as a decision rather than a detail. Extending the sequence length only in the final 120B tokens concentrates the expensive long-context work at the end, after the cheap short-context stage has already done the bulk of the learning — the same instinct visible in Dante-2B's phased context extension and in most compute-constrained academic runs. It is what optimization under a fixed, non-renewable allocation looks like.
+The staging is worth reading as a decision rather than a detail. Extending the sequence length only in the final 120B tokens concentrates the expensive long-context work at the end, after the cheap short-context stage has already done the bulk of the learning, the same instinct visible in Dante-2B's phased context extension and in most compute-constrained academic runs. It is what optimization under a fixed, non-renewable allocation looks like.
 
 ## What it found
 

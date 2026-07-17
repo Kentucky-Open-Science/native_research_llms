@@ -22,7 +22,7 @@ A model qualifies only if its weights were **initialized randomly** and trained 
 
 This is the entire reason the list exists. Without the rule, "academic LLM" collapses into "someone at a university ran a fine-tune", which describes thousands of artifacts and tells you nothing about institutional capability. With the rule, the list answers a specific and much harder question: *which non-commercial institutions have actually built a foundation model end to end?*
 
-That question matters because the interesting properties of a model — data provenance, tokenizer design, licensing freedom, auditability of the full training pipeline — are determined at pretraining time. A model warm-started from a commercial checkpoint inherits that checkpoint's data opacity and its license, no matter how much subsequent training it receives. You cannot audit what you did not train.
+That question matters because the interesting properties of a model (data provenance, tokenizer design, licensing freedom, auditability of the full training pipeline) are determined at pretraining time. A model warm-started from a commercial checkpoint inherits that checkpoint's data opacity and its license, no matter how much subsequent training it receives. You cannot audit what you did not train.
 
 ### What disqualifies a model
 
@@ -39,13 +39,13 @@ That question matters because the interesting properties of a model — data pro
 
 ## The institutional rule
 
-**Academic means a university.** The first list is universities only — the question the registry exists to answer is *which universities have built a foundation model end to end*.
+**Academic means a university.** The first list is universities only: the question the registry exists to answer is *which universities have built a foundation model end to end*.
 
 Everything else non-commercial is tracked too, but in separate sections and not labeled "academic":
 
-- **Universities** — the academic list. Degree-granting universities. MBZUAI, Instituto Superior Técnico, CentraleSupélec, SUTD, SJTU, EPFL, ETH Zürich, Sapienza, and the rest all count. A commercial co-developer does **not** move a university off this list — the partner is recorded inline as a tag, not a demotion.
-- **Research institutes and national labs** — a separate section. Non-profit research institutes, national laboratories, government research institutes, and foundations: Ai2, EleutherAI, BAAI, TII, NII, SDAIA, AI Singapore, Shanghai AI Lab, Oak Ridge, the Barcelona Supercomputing Center, and the like. These do serious from-scratch work — Ai2's OLMo and EleutherAI's Pythia are among the most reproducible models in existence — but they are **not universities**, so they are not on the academic list.
-- **Public research consortia** — a third section. Named multi-party public efforts: BigScience, OpenGPT-X, the EuroHPC projects.
+- **Universities** are the academic list. Degree-granting universities: MBZUAI, Instituto Superior Técnico, CentraleSupélec, SUTD, SJTU, EPFL, ETH Zürich, Sapienza, and the rest all count. A commercial co-developer does **not** move a university off this list; the partner is recorded inline as a tag, not a demotion.
+- **Research institutes and national labs** get a separate section. Non-profit research institutes, national laboratories, government research institutes, and foundations: Ai2, EleutherAI, BAAI, TII, NII, SDAIA, AI Singapore, Shanghai AI Lab, Oak Ridge, the Barcelona Supercomputing Center, and the like. These do serious from-scratch work (Ai2's OLMo and EleutherAI's Pythia are among the most reproducible models in existence), but they are **not universities**, so they are not on the academic list.
+- **Public research consortia** form a third section. Named multi-party public efforts: BigScience, OpenGPT-X, the EuroHPC projects.
 - **Corporate research divisions** are excluded entirely, even when they publish excellent papers and release open weights. FAIR, Microsoft Research, and NVIDIA Research are not in scope.
 
 Using commercial cloud or vendor hardware does not change who led a run; leadership does, not the invoice.
@@ -54,15 +54,15 @@ Using commercial cloud or vendor hardware does not change who led a run; leaders
 
 Every entry needs at least one canonical, resolving public link.
 
-Private documents, internal reports, unlisted Drive files, and personal correspondence cannot establish an entry. This is not bureaucratic caution. A registry whose claims cannot be checked is not a registry, it is an assertion — and the failure mode is specific: unverifiable entries tend to carry the *most* impressive-sounding detail, because nothing constrains them.
+Private documents, internal reports, unlisted Drive files, and personal correspondence cannot establish an entry. This is not bureaucratic caution. A registry whose claims cannot be checked is not a registry, it is an assertion, and the failure mode is specific: unverifiable entries tend to carry the *most* impressive-sounding detail, because nothing constrains them.
 
 ## The verified-weights and scale rules
 
 A verified entry has **openly downloadable weights** and roughly **1B or more parameters**.
 
-Weights that are gated behind approval, region-locked, or never released do not meet the bar. Nor does a sub-1B research prototype, however influential — the reference implementations of alternative architectures often land here. Neither is *disqualifying*: a model that clears the from-scratch rule but misses one of these lands on the [unverified candidates]({% link unverified.md %}) list, held until the blocking condition changes. That is a different fate from a from-scratch failure, which is removed outright.
+Weights that are gated behind approval, region-locked, or never released do not meet the bar. Nor does a sub-1B research prototype, however influential; the reference implementations of alternative architectures often land here. Neither is *disqualifying*: a model that clears the from-scratch rule but misses one of these lands on the [unverified candidates]({% link unverified.md %}) list, held until the blocking condition changes. That is a different fate from a from-scratch failure, which is removed outright.
 
-The one exception to open weights is a documented **data-protection** constraint. GatorTronGPT cannot release raw weights trained on protected health information without risking re-identification of patients; that PHI gate is a legitimate constraint, not evasion, and the model is thoroughly documented in the literature, so it stays on the verified list, marked as such. The exception is narrow — it covers legally protected training data, not ordinary access controls.
+The one exception to open weights is a documented **data-protection** constraint. GatorTronGPT cannot release raw weights trained on protected health information without risking re-identification of patients; that PHI gate is a legitimate constraint, not evasion, and the model is thoroughly documented in the literature, so it stays on the verified list, marked as such. The exception is narrow: it covers legally protected training data, not ordinary access controls.
 
 ## The language-model rule
 
@@ -74,4 +74,4 @@ Foundation models over non-linguistic sequence data are not, however architectur
 
 Entries that fail verification are **removed, not footnoted**.
 
-A list that keeps a disproven entry with an asterisk has decided its own completeness matters more than its accuracy. This one has decided the opposite. If you can show that a listed model was not trained from scratch, that its institution is misattributed, or that it does not exist, please [open a correction](https://github.com/Kentucky-Open-Science/native_research_llms/issues/new?template=correction.yml) — that is a contribution of exactly the same value as an addition.
+A list that keeps a disproven entry with an asterisk has decided its own completeness matters more than its accuracy. This one has decided the opposite. If you can show that a listed model was not trained from scratch, that its institution is misattributed, or that it does not exist, please [open a correction](https://github.com/Kentucky-Open-Science/native_research_llms/issues/new?template=correction.yml), that is a contribution of exactly the same value as an addition.

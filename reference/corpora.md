@@ -18,7 +18,7 @@ Pretraining data, tokenizers, and the machines these runs actually happened on.
 
 ## How to read this table
 
-Token volumes refer to the **pretraining** run only — not mid-training, not annealing, not instruction tuning. Where a project reports several figures, this table takes the one the technical report defines as pretraining and notes conflicts below.
+Token volumes refer to the **pretraining** run only, not mid-training, not annealing, not instruction tuning. Where a project reports several figures, this table takes the one the technical report defines as pretraining and notes conflicts below.
 
 `Not disclosed` means the value was never published.
 
@@ -79,12 +79,12 @@ Token volumes refer to the **pretraining** run only — not mid-training, not an
 
 These are places where sources disagree. The table above takes the technical report's figure; the conflict is recorded here rather than silently resolved.
 
-- **Salamandra 7B** — some secondary sources report 7.8T tokens. The model card states 12.875T "pre-trained from scratch." The card wins.
-- **TinyLlama** — the abstract says roughly 1T unique tokens over about 3 epochs; the project and body report 3T total. `TinyLlama_v1.1` is a separate 2T run, not a revision of the same model.
-- **YuLan-Base-12B** — the readme says "over 1.6TB tokens," conflating bytes with tokens. The paper's ~1.7T is the citable figure.
-- **LLM-jp-4** — the press release reports ~10.5T tokens used from a ~19.5T corpus, plus ~1.2T mid-training; the thinking-variant card reports 11.7T across pretraining and mid-training combined. Both are consistent once you separate the stages.
-- **Jais 2** — 1.6T circulates widely but appears to be the web/math/code subset, or carried over from jais-family-30b-16k's 1.666T. The tech report's total is 2.6T.
-- **SmallThinker-21B** — 2.0T circulates; the paper reports 7.2T for the 21B and 2.5T for the 4B.
+- **Salamandra 7B**, some secondary sources report 7.8T tokens. The model card states 12.875T "pre-trained from scratch." The card wins.
+- **TinyLlama**, the abstract says roughly 1T unique tokens over about 3 epochs; the project and body report 3T total. `TinyLlama_v1.1` is a separate 2T run, not a revision of the same model.
+- **YuLan-Base-12B**, the readme says "over 1.6TB tokens," conflating bytes with tokens. The paper's ~1.7T is the citable figure.
+- **LLM-jp-4**, the press release reports ~10.5T tokens used from a ~19.5T corpus, plus ~1.2T mid-training; the thinking-variant card reports 11.7T across pretraining and mid-training combined. Both are consistent once you separate the stages.
+- **Jais 2**, 1.6T circulates widely but appears to be the web/math/code subset, or carried over from jais-family-30b-16k's 1.666T. The tech report's total is 2.6T.
+- **SmallThinker-21B**, 2.0T circulates; the paper reports 7.2T for the 21B and 2.5T for the 4B.
 
 ## What the table shows
 
@@ -92,8 +92,8 @@ These are places where sources disagree. The table above takes the technical rep
 
 Fugaku is the outlier worth pausing on: 13,824 **CPU** nodes, with Megatron-DeepSpeed ported to A64FX specifically to make it possible. It is the clearest demonstration on this list that the constraint is institutional access rather than any particular hardware.
 
-**Tokenizers are where the linguistics lives.** Vocabulary sizes span 28,896 to 256,000, and the spread is not arbitrary. The large vocabularies belong to multilingual projects and morphologically rich languages buying back sequence length that an English-centric BPE would waste — Salamandra and SEA-LION at 256K, BLOOM at 250K, Jais at 150K for Arabic. The small ones belong to focused monolingual or domain runs: BioMedLM's 28,896-token PubMed vocabulary is the smallest here.
+**Tokenizers are where the linguistics lives.** Vocabulary sizes span 28,896 to 256,000, and the spread is not arbitrary. The large vocabularies belong to multilingual projects and morphologically rich languages buying back sequence length that an English-centric BPE would waste, Salamandra and SEA-LION at 256K, BLOOM at 250K, Jais at 150K for Arabic. The small ones belong to focused monolingual or domain runs: BioMedLM's 28,896-token PubMed vocabulary is the smallest here.
 
 BioMedLM's vocabulary also settles its own provenance. At 28,896 tokens against GPT-2's 50,257, the embedding matrices are shape-incompatible, so a fine-tune of GPT-2 is not merely undocumented but arithmetically impossible. Several entries can be verified this way: a bespoke tokenizer is a fingerprint of a from-scratch run, because you cannot inherit weights whose vocabulary you have replaced. CroissantLLM's bilingual tokenizer, CPM's Chinese sub-word vocabulary, and TeenyTinyLlama's Portuguese SentencePiece all carry the same signature.
 
-**From-scratch and openly available pull in opposite directions in clinical NLP.** The most rigorous clinical pretraining runs are the hardest to obtain, and the mechanism is visible in the corpus column. GatorTronGPT's 82B words of UF Health notes are what make it worth building and what make its weights ungatable — its own paper's data-availability statement lists only its encoders. BioMedLM avoided the problem by staying on published literature and still ships a license forbidding medical advice. There is no clinical model on this list that is simultaneously from scratch, open-weight, and trained on real patient records, and the corpus column explains why there cannot be.
+**From-scratch and openly available pull in opposite directions in clinical NLP.** The most rigorous clinical pretraining runs are the hardest to obtain, and the mechanism is visible in the corpus column. GatorTronGPT's 82B words of UF Health notes are what make it worth building and what make its weights ungatable, its own paper's data-availability statement lists only its encoders. BioMedLM avoided the problem by staying on published literature and still ships a license forbidding medical advice. There is no clinical model on this list that is simultaneously from scratch, open-weight, and trained on real patient records, and the corpus column explains why there cannot be.

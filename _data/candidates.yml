@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------
-# Candidate & vetting bucket  —  safe-keeping store, NOT the published list.
+# Candidate & vetting bucket ,  safe-keeping store, NOT the published list.
 #
 # This file holds the full research output from the from-scratch vetting pass
 # (2026-07-16). Nothing here is auto-published: Jekyll reads _data/*.yml only
@@ -34,7 +34,7 @@ meta:
     scale_floor: "~1B parameters. A family with a >=1B released variant qualifies at those sizes; sub-1B-only models => unverified/metrics list."
     model_type: "Generative LMs only for the verified lists (decoder / enc-dec / diffusion). Encoder-only (BERT-style) EXCLUDED from verified; park in candidate bucket."
     collaboration field on each record below: "pure-academic | academic-commercial (added where determined)."
-  open_question: "Resolve 3 conflicts these rules create with EXISTING listed entries before rewriting readme: (1) GatorTronGPT — criteria.md carved out its PHI-gated weights, but 'open weights required' would drop it; (2) GPT-SW3 / Fanar Star / NorGPT — gated or unreleased weights => move to unverified?; (3) BLOOM — consortium with heavy Hugging Face involvement => pure, collaboration, or its own consortium bucket? Also: TeenyTinyLlama (160M/460M) drops on the 1B floor. See listed_edge_cases."
+  open_question: "Resolve 3 conflicts these rules create with EXISTING listed entries before rewriting readme: (1) GatorTronGPT, criteria.md carved out its PHI-gated weights, but 'open weights required' would drop it; (2) GPT-SW3 / Fanar Star / NorGPT, gated or unreleased weights => move to unverified?; (3) BLOOM, consortium with heavy Hugging Face involvement => pure, collaboration, or its own consortium bucket? Also: TeenyTinyLlama (160M/460M) drops on the 1B floor. See listed_edge_cases."
 
 # ===========================================================================
 # NEW CANDIDATES THAT PASS  (from-scratch + non-commercial lead confirmed)
@@ -133,7 +133,7 @@ candidates_qualifies:
     link: "https://github.com/THUDM/GLM-130B"
     license: "code apache-2.0; weights gated custom GLM-130B Model License"
     verdict: qualifies
-    reason: "From-scratch 130B bilingual, Tsinghua-led. Watch-item: weights are application-gated, not open — matters if the verified list requires open weights."
+    reason: "From-scratch 130B bilingual, Tsinghua-led. Watch-item: weights are application-gated, not open, matters if the verified list requires open weights."
 
   # --- Japanese ----------------------------------------------------------
   - name: weblab-10b
@@ -179,7 +179,7 @@ candidates_qualifies:
     link: "https://huggingface.co/airesearch/wangchanberta-base-att-spm-uncased"
     license: "cc-by-sa-4.0"
     verdict: qualifies
-    reason: "Architecture reuse + fresh monolingual training. Soft spot: sources say 'from RoBERTa architecture' not literally 'random init' — fine but the weakest documentary case here."
+    reason: "Architecture reuse + fresh monolingual training. Soft spot: sources say 'from RoBERTa architecture' not literally 'random init', fine but the weakest documentary case here."
 
   # --- Biomedical / scientific -------------------------------------------
   - name: SciBERT (scivocab)
@@ -209,7 +209,7 @@ candidates_qualifies:
     evidence: "a suite of open foundation models called FORGE with up to 26B parameters using 257B tokens from over 200M scientific articles; no base checkpoint"
     evidence_url: "https://www.osti.gov/biblio/2311298"
     link: "https://github.com/at-aaims/forge"
-    license: "NONE — no LICENSE file (GitHub API license:null); weights via Dropbox in README, not on HF"
+    license: "NONE, no LICENSE file (GitHub API license:null); weights via Dropbox in README, not on HF"
     verdict: qualifies
     reason: "From-scratch GPT-NeoX scientific LM from a DOE lab. FLAG the missing license before relying on it."
 
@@ -246,7 +246,7 @@ candidates_qualifies:
   - name: LLaDA
     params: "8B (Base + Instruct)"
     category: alternative-objectives
-    arch_note: "masked diffusion language model — strongest alt-arch candidate"
+    arch_note: "masked diffusion language model, strongest alt-arch candidate"
     institutions: ["Renmin University of China / Gaoling School of AI", "Ant Group"]
     institution_type: university
     academic_lead: true
@@ -351,7 +351,7 @@ candidates_qualifies:
     link: "https://huggingface.co/louaaron/sedd-medium"
     license: "mit"
     verdict: qualifies
-    reason: "Full OpenWebText pretrain up to 320M — above toy threshold."
+    reason: "Full OpenWebText pretrain up to 320M, above toy threshold."
 
   - name: MDLM (Masked Diffusion LM)
     params: "~170M"
@@ -413,7 +413,7 @@ candidates_qualifies:
     link: "https://huggingface.co/Zymrael/hyena-small-150b-tok"
     license: "BSD-3-Clause (weights); repo apache-2.0"
     verdict: qualifies
-    reason: "Only a 153M checkpoint is public — mark UNCERTAIN if a >=200M released-weight floor is set."
+    reason: "Only a 153M checkpoint is public, mark UNCERTAIN if a >=200M released-weight floor is set."
 
   - name: Diffusion-LM
     params: "~80M"
@@ -465,7 +465,7 @@ candidates_uncertain:
     link: "https://huggingface.co/RWKV"
     license: "apache-2.0"
     verdict: uncertain
-    reason: "From-scratch, trillion-token, Apache-2.0, non-profit governance — but no institutional academic lead. Qualifies under the non-commercial spirit; borderline under a strict institutional-lead requirement."
+    reason: "From-scratch, trillion-token, Apache-2.0, non-profit governance, but no institutional academic lead. Qualifies under the non-commercial spirit; borderline under a strict institutional-lead requirement."
 
   - name: AuroraGPT (ScienceGPT)
     params: "7B, 70B base (roadmap to 400B+)"
@@ -474,7 +474,7 @@ candidates_uncertain:
     institution_type: national-lab
     academic_lead: true
     from_scratch: "yes"
-    evidence: "One pretrained model — trained on 2 trillion tokens — is already complete"
+    evidence: "One pretrained model, trained on 2 trillion tokens, is already complete"
     evidence_url: "https://www.alcf.anl.gov/science/case-studies/auroragpt-large-scale-foundation-model-advancing-science"
     link: "https://huggingface.co/argonne-private (gated/private)"
     license: "none public"
@@ -485,13 +485,13 @@ candidates_uncertain:
 # DISQUALIFIED  (kept so it is not re-litigated; reason recorded)
 # ===========================================================================
 disqualified:
-  - { name: PLLuM, institution: "Wrocław Univ. of Sci. & Tech. consortium (academic)", reason: "Continued-pretraining on Llama 3.1 / Mistral-Nemo / Gemma-3 — every shipped repo warm-starts a third-party base.", url: "https://huggingface.co/CYFRAGOVPL/Llama-PLLuM-70B-base-2412" }
+  - { name: PLLuM, institution: "Wrocław Univ. of Sci. & Tech. consortium (academic)", reason: "Continued-pretraining on Llama 3.1 / Mistral-Nemo / Gemma-3, every shipped repo warm-starts a third-party base.", url: "https://huggingface.co/CYFRAGOVPL/Llama-PLLuM-70B-base-2412" }
   - { name: Gervásio, institution: "University of Lisbon / NLX", reason: "Supervised fine-tune of LLaMA-2 7B ('developed over the LLaMA-2 7B model').", url: "https://huggingface.co/PORTULAN/gervasio-7b-portuguese-ptpt-decoder" }
   - { name: Albertina, institution: "University of Lisbon / NLX", reason: "Continued-pretraining of DeBERTa V2 XLarge.", url: "https://huggingface.co/PORTULAN/albertina-900m-portuguese-ptpt-encoder" }
   - { name: Trurl 2, institution: "Voicelab.AI (company)", reason: "Corporate + finetune of LLaMA-2 (double disqualification).", url: "https://huggingface.co/Voicelab/trurl-2-13b" }
   - { name: Bielik, institution: "SpeakLeash (non-profit) + Cyfronet", reason: "Continued-pretraining of Mistral-7B (self-admitted: chose not to train from scratch).", url: "https://arxiv.org/html/2410.18565v1" }
   - { name: Qra, institution: "OPI PIB + Gdańsk Univ. of Tech.", reason: "Initialized with LLaMA-2 weights, then continued-pretrained.", url: "https://huggingface.co/OPI-PG/Qra-7b" }
-  - { name: MOSS, institution: "Fudan University (academic)", reason: "Initialized from Salesforce CodeGen, then continued Chinese pretraining — not random init.", url: "https://github.com/OpenMOSS/MOSS" }
+  - { name: MOSS, institution: "Fudan University (academic)", reason: "Initialized from Salesforce CodeGen, then continued Chinese pretraining, not random init.", url: "https://github.com/OpenMOSS/MOSS" }
   - { name: WangchanLION / WangchanX, institution: "VISTEC + AI Singapore", reason: "Instruction-finetune on Gemma-SEA-LION-v3-9B (itself continued-pretrain of Gemma-2).", url: "https://huggingface.co/aisingapore/Gemma2-9b-WangchanLIONv2-instruct" }
   - { name: OpenThaiGPT, institution: "AIEAT/AIAT + iApp (mixed)", reason: "Built upon Qwen-2.5 (v1.5) / vocab-extended continual pretrain of Llama-2 (v1.0).", url: "https://arxiv.org/html/2411.07238v1" }
   - { name: Noon-7b, institution: "Naseej (company)", reason: "Corporate + finetune of BLOOM-7B (bloom arch, bloom-rail license).", url: "https://huggingface.co/Naseej/noon-7b" }
@@ -500,9 +500,9 @@ disqualified:
   - { name: Zamba / Zamba2, institution: "Zyphra (company)", reason: "From-scratch, but corporate lead disqualifies.", url: "https://huggingface.co/Zyphra/Zamba2-2.7B" }
   - { name: SmolLM / SmolLM2 / SmolLM3, institution: "Hugging Face (company)", reason: "From-scratch, but corporate lead disqualifies.", url: "https://huggingface.co/HuggingFaceTB/SmolLM3-3B" }
   - { name: xLSTM 7B, institution: "NXAI GmbH (company)", reason: "Company release (Hochreiter also at JKU Linz, but the 7B is an NXAI product).", url: "https://arxiv.org/pdf/2503.13427" }
-  - { name: SSD-LM, institution: "University of Washington", reason: "Initialized with RoBERTa's weights — not random init.", url: "https://arxiv.org/abs/2210.17432" }
+  - { name: SSD-LM, institution: "University of Washington", reason: "Initialized with RoBERTa's weights, not random init.", url: "https://arxiv.org/abs/2210.17432" }
   - { name: BD3-LM, institution: "Cornell (Kuleshov group)", reason: "Released checkpoints finetuned from an MDLM checkpoint; use MDLM as the from-scratch pick from this group.", url: "https://arxiv.org/abs/2503.09573" }
-  - { name: PersianLLaMA, institution: "ViraIntelligentDataMining", reason: "Full-weight 13B (NOT a LoRA) but built on Meta's LLaMA — continued-pretrain, not from scratch. 7B repo does not resolve.", url: "https://arxiv.org/abs/2312.15713" }
+  - { name: PersianLLaMA, institution: "ViraIntelligentDataMining", reason: "Full-weight 13B (NOT a LoRA) but built on Meta's LLaMA, continued-pretrain, not from scratch. 7B repo does not resolve.", url: "https://arxiv.org/abs/2312.15713" }
 
 # ===========================================================================
 # ALREADY-LISTED MODELS a stricter reading would flag
@@ -511,7 +511,7 @@ disqualified:
 listed_edge_cases:
   - name: Poro 34B / Viking
     status: listed
-    flag: "Co-developed with Silo AI (company, acquired by AMD 2024). From-scratch confirmed; TurkuNLP (University of Turku) is the academic scientific lead. The current criteria.md explicitly allows industry collaboration when academics lead — so listed. A stricter 'no prominent corporate co-lead' rule would move it to uncertain."
+    flag: "Co-developed with Silo AI (company, acquired by AMD 2024). From-scratch confirmed; TurkuNLP (University of Turku) is the academic scientific lead. The current criteria.md explicitly allows industry collaboration when academics lead, so listed. A stricter 'no prominent corporate co-lead' rule would move it to uncertain."
   - name: BLOOM
     status: listed
     flag: "BigScience is a 1000+ researcher public consortium on French public HPC (Jean Zay); one vetting pass argued de-facto Hugging Face (Thomas Wolf) leadership. Listed under the consortium framing. Requirement question: how is 'lead' attributed for large consortia?"

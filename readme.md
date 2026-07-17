@@ -1,14 +1,14 @@
 # The Academic Foundation Model Index (AFMI) [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-> An index of foundation models trained natively — from scratch, on their own data and tokenizer — by academic and research institutions. Universities come first; research institutes, national labs, and public consortia are tracked alongside.
+> An index of foundation models trained natively, from scratch, on their own data and tokenizer, by academic and research institutions. Universities come first; research institutes, national labs, and public consortia are tracked alongside.
 
-Foundation model development is dominated by well-funded commercial labs, and data opacity, licensing constraints, and architectural gatekeeping come with it. In response, universities and other public institutions have pretrained large language models from a *tabula rasa* state — random weights, own corpus, own tokenizer, auditable end to end.
+Foundation model development is dominated by well-funded commercial labs, and data opacity, licensing constraints, and architectural gatekeeping come with it. In response, universities and other public institutions have pretrained large language models from a *tabula rasa* state: random weights, own corpus, own tokenizer, auditable end to end.
 
-**Academic means a university.** This list puts universities first, because that is the question worth asking — *which universities have actually built a foundation model end to end?* Non-profit research institutes, national laboratories, government institutes, and think tanks — Ai2, EleutherAI, BAAI, TII, NII, and the like — do serious from-scratch work and are tracked here, but in a **separate section below**, because they are not universities.
+**Academic means a university.** This list puts universities first, because that is the question worth asking: *which universities have actually built a foundation model end to end?* Non-profit research institutes, national laboratories, government institutes, and think tanks (Ai2, EleutherAI, BAAI, TII, NII, and the like) do serious from-scratch work and are tracked here, but in a **separate section below**, because they are not universities.
 
-The from-scratch rule is strict: continued pretraining on a commercial base does not qualify, however substantial the training that follows. Reusing an architecture is fine; inheriting weights is not. A verified entry also has **openly downloadable weights** and roughly **1B+ parameters**. A commercial co-developer does not move a university off the first list — the partner is noted inline. See the [inclusion criteria](reference/criteria.md), the [architectures](reference/architectures.md) and [corpora](reference/corpora.md) specifications, and the [unverified candidates](unverified.md) that miss a bar.
+The from-scratch rule is strict: continued pretraining on a commercial base does not qualify, however substantial the training that follows. Reusing an architecture is fine; inheriting weights is not. A verified entry also has **openly downloadable weights** and roughly **1B+ parameters**. A commercial co-developer does not move a university off the first list; the partner is noted inline. See the [inclusion criteria](reference/criteria.md), the [architectures](reference/architectures.md) and [corpora](reference/corpora.md) specifications, and the [unverified candidates](unverified.md) that miss a bar.
 
-Entries marked **⚠** carry a caveat worth reading before you rely on them — usually a restrictive license or a documented access constraint.
+Entries marked **⚠** carry a caveat worth reading before you rely on them, usually a restrictive license or a documented access constraint.
 
 ## Contents
 
@@ -20,18 +20,19 @@ Entries marked **⚠** carry a caveat worth reading before you rely on them — 
 
 ## Rankings
 
-The headline metric is **IFEval strict-avg** — instruction-following accuracy, the Open LLM Leaderboard's "IFEval" column — measured against the original-ChatGPT line, **GPT-3.5-turbo ≈ 59.3**. It asks one question: *has a from-scratch university model reached what made ChatGPT usable?*
+The headline metric is **IFEval strict-avg** (instruction-following accuracy, the Open LLM Leaderboard's "IFEval" column), measured against the original-ChatGPT line, **GPT-3.5-turbo-1106 = 55.9**. It asks one question: *has a from-scratch university model reached what made ChatGPT usable?*
 
 | IFEval (strict-avg) | University model | Institution |
 |--:|:--|:--|
 | **74.9** | Jais 2 (70B) | MBZUAI |
-| *59.3* | *— GPT-3.5-turbo, the reference line —* | *OpenAI* |
+| **61.6** | KOS-V4-Instruct (3B) | University of Kentucky |
+| *55.9* | *GPT-3.5-turbo-1106, the reference line* | *OpenAI* |
 | **51.5** | LLM360 K2 | MBZUAI |
 | **6.0** | TinyLlama-1.1B | SUTD |
 
-Only three university models have a comparable published IFEval, and **Jais 2 (MBZUAI) is the one that clears the GPT-3.5 line**. Every other university model has no published IFEval and **needs evaluation** — that gap is the main finding, not a footnote. (Apertus 75.2 and OLMo 3 89.0 report IFEval in loose/inst formats that are not comparable to strict-avg, so they are not on the line.)
+Two university models clear the original-ChatGPT line: Jais 2 (MBZUAI, 74.9) and, from a 3B trained on 180B tokens and 24 GPUs, **KOS-V4-Instruct (University of Kentucky, 61.6)**. Four university models have a comparable published IFEval; every other one has none and **needs evaluation**, which is the main finding rather than a footnote. (Apertus 75.2 and OLMo 3 89.0 report IFEval in loose/inst formats that are not comparable to strict-avg, so they are not on the line.)
 
-Full tables — research institutes, commercial anchors (GPT-4o, Llama 3.1, Qwen2.5), MMLU, format caveats, and the complete needs-eval list — are on the [rankings page](rankings.md).
+The full tables (research institutes, commercial anchors, MMLU, format caveats, and the complete needs-eval list) are on the [rankings page](rankings.md).
 
 ## Universities
 
@@ -39,7 +40,7 @@ The academic list. Led by a university; a commercial co-developer is noted inlin
 
 ### Fully open and reproducible
 
-- [Marin 8B](https://github.com/marin-community/marin) - Stanford CRFM's 8B and 32B models trained on 12T tokens, with the entire research process — code, data, experiments, and failures — documented in the open as it happened.
+- [Marin 8B](https://github.com/marin-community/marin) - Stanford CRFM's 8B and 32B models trained on 12T tokens, with the entire research process (code, data, experiments, and failures) documented in the open as it happened.
 - [OpenLLaMA](https://huggingface.co/openlm-research/open_llama_7b) - UC Berkeley's OpenLM Research 3B, 7B, and 13B open reproduction of LLaMA, with tokenizer and weights trained from scratch on RedPajama and RefinedWeb.
 - [DCLM-7B](https://github.com/mlfoundations/dclm) - The University of Washington and ML Foundations' 7B, built with Apple, trained on 2.6T tokens as the reference model for the DataComp-LM benchmark. **⚠** Weights ship under Apple's Sample Code License, not an OSI license.
 - [FinGPT](https://turkunlp.org/gpt3-finnish) - TurkuNLP (University of Turku)'s seven monolingual Finnish models from 186M to 13B, each trained on 300B tokens. Unrelated to AI4Finance's identically named financial model.
@@ -67,8 +68,9 @@ The academic list. Led by a university; a commercial co-developer is noted inlin
 
 ### Biomedical and clinical
 
+- [KOS-V4](https://huggingface.co/Kentucky-Open-Science/KOS-V4-Instruct) - The University of Kentucky College of Medicine's 3B decoder trained from scratch on 180B tokens of medical text (base KOS-V4-Base, 24 GPUs). Its GRPO-tuned Instruct variant scores 61.6 IFEval strict-avg, clearing the original GPT-3.5-turbo. **⚠** Non-commercial, research-only (CC BY-NC-SA).
 - [BioMedLM](https://huggingface.co/stanford-crfm/BioMedLM) - Stanford CRFM's 2.7B trained solely on PubMed with a purpose-built 28,896-token biomedical vocabulary, small enough to deploy privately. **⚠** The BLOOM RAIL license forbids using it to provide medical advice.
-- [GatorTronGPT](https://github.com/uf-hobi-informatics-lab/GatorTronGPT) - University of Florida's 5B and 20B trained on 277B words including 82B words of UF Health clinical notes. **⚠** Weights gated behind UF licensing because of PHI provenance — a documented data-protection exception; the open artifact is the 345M GatorTronS.
+- [GatorTronGPT](https://github.com/uf-hobi-informatics-lab/GatorTronGPT) - University of Florida's 5B and 20B trained on 277B words including 82B words of UF Health clinical notes. **⚠** Weights gated behind UF licensing because of PHI provenance, a documented data-protection exception; the open artifact is the 345M GatorTronS.
 
 ### Small and efficient
 
@@ -88,7 +90,7 @@ The academic list. Led by a university; a commercial co-developer is noted inlin
 
 ## Research institutes and national labs
 
-Serious from-scratch work by non-profit institutes, national labs, government institutes, and foundations. In the registry, but **not universities** — so not part of the academic list above.
+Serious from-scratch work by non-profit institutes, national labs, government institutes, and foundations. In the registry, but **not universities**, so not part of the academic list above.
 
 ### Fully open and reproducible
 
@@ -143,4 +145,4 @@ Named multi-party public consortia, funded and staffed across several institutio
 
 ## Contributing
 
-Contributions are welcome. Read the [contribution guidelines](contributing.md) first — additions must include evidence of from-scratch pretraining, and corrections are held to the same standard as additions.
+Contributions are welcome. Read the [contribution guidelines](contributing.md) first, additions must include evidence of from-scratch pretraining, and corrections are held to the same standard as additions.

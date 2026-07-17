@@ -6,7 +6,7 @@
 # metric we rank on, because the goal is to measure university autoregressive-
 # decoder progress against the original-ChatGPT / GPT-3.5 line.
 #
-#   ANCHOR: GPT-3.5-turbo strict-avg ~= 59.3  (prompt-strict 53.8 / inst 64.7).
+#   ANCHOR: GPT-3.5-turbo-1106 strict-avg = 55.9  (prompt-strict 50.5 / inst 61.2).
 #
 # Universities come FIRST (that is the point of the registry). MMLU is kept as a
 # SECONDARY field only.
@@ -23,8 +23,8 @@
 meta:
   updated: "2026-07-17"
   headline_metric: "IFEval strict-avg (Open LLM Leaderboard v2 'IFEval' column)"
-  anchor: "GPT-3.5-turbo strict-avg ~=59.3 (original-ChatGPT line)"
-  finding: "Across all verified models, IFEval strict-avg exists for only ~10. Of the UNIVERSITY models, only 3 have a comparable strict-avg (Jais 2, LLM360 K2, TinyLlama). The rest have no published IFEval and must be evaluated by us."
+  anchor: "GPT-3.5-turbo-1106 strict-avg = 55.9 (the original-ChatGPT line; InternLM2 report 50.5/61.2)"
+  finding: "Across all verified models, IFEval strict-avg exists for only ~11. Of the UNIVERSITY models, 4 have a comparable strict-avg (Jais 2, KOS-V4, LLM360 K2, TinyLlama); TWO clear the GPT-3.5 line, Jais 2 (74.9) and KOS-V4-Instruct (61.6, a from-scratch 3B). The rest have no published IFEval and must be evaluated by us."
   format_warning: "Do NOT mix formats. loose > strict, and prompt-strict != strict-avg. Apertus(loose), OLMo 3(inst-loose), InternLM3(prompt-strict), SmallThinker(unlabeled) are shown but NOT ranked against the strict-avg line."
 
 # Commercial reference line (strict-avg unless noted). GPT-3.5 is THE anchor.
@@ -34,16 +34,17 @@ anchors:
   - { name: "Qwen2.5-72B-Instruct", ifeval: 86.4, fmt: strict-avg, src: "OLL v2" }
   - { name: "Llama-3.1-70B-Instruct", ifeval: 86.7, fmt: strict-avg, src: "OLL v2" }
   - { name: "gemma-2-9b-it", ifeval: 74.4, fmt: strict-avg, src: "OLL v2" }
-  - { name: "GPT-3.5-turbo", ifeval: 59.3, fmt: strict-avg, note: "ANCHOR; prompt-strict 53.8 / inst-strict 64.7", src: "https://arxiv.org/abs/2402.13064" }
+  - { name: "GPT-3.5-turbo-1106", ifeval: 55.9, fmt: strict-avg, note: "ANCHOR (original ChatGPT); prompt-strict 50.5 / inst-strict 61.2", src: "InternLM2 report arXiv:2403.17297" }
   - { name: "Mistral-7B-Instruct-v0.2", ifeval: 55.0, fmt: strict-avg, src: "OLL v2" }
   - { name: "Llama-2-70b-chat", ifeval: 49.6, fmt: strict-avg, note: "GPT-3.5 contemporary", src: "OLL v2" }
 
 # =========================================================================
-# UNIVERSITIES — the academic ranking (first).
+# UNIVERSITIES, the academic ranking (first).
 # =========================================================================
 university:
   # -- comparable strict-avg --
   - { name: "Jais 2", inst: "MBZUAI", variant: "Jais-2-70B-Chat", ifeval: 74.9, fmt: strict-avg, status: strict-avg, mmlu: null, note: "EN; AR 70.6. Computed from card (70.78/78.93).", src: "https://huggingface.co/inceptionai/Jais-2-70B-Chat" }
+  - { name: "KOS-V4-Instruct", inst: "University of Kentucky", variant: "KOS-V4-Instruct (3B)", ifeval: 61.6, fmt: strict-avg, status: strict-avg, note: "from-scratch 3B, 180B tokens, 24 GPUs; GRPO-tuned (49.4 SFT to 61.6); clears GPT-3.5-turbo-1106 (55.9); own harness, calibrated to OLL (Qwen2.5-3B 64.0 vs OLL 64.7)", src: "https://huggingface.co/Kentucky-Open-Science/KOS-V4-Instruct" }
   - { name: "LLM360 K2", inst: "MBZUAI", variant: "K2-Chat", ifeval: 51.5, fmt: strict-avg, status: oll, mmlu: null, src: "OLL v2" }
   - { name: "TinyLlama-1.1B", inst: "SUTD", variant: "TinyLlama-1.1B-Chat-v1.0", ifeval: 6.0, fmt: strict-avg, status: oll, mmlu: "25 (chance)", src: "OLL v2" }
   # -- IFEval exists but wrong format (NOT ranked against strict-avg) --
@@ -80,7 +81,7 @@ university:
   - { name: "GLA", inst: "MIT", status: needs-eval, note: "base" }
 
 # =========================================================================
-# RESEARCH INSTITUTES & NATIONAL LABS — in the mix, not academic.
+# RESEARCH INSTITUTES & NATIONAL LABS, in the mix, not academic.
 # =========================================================================
 research_institute:
   # -- comparable strict-avg --

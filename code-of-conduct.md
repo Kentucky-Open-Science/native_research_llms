@@ -26,7 +26,7 @@ Examples of unacceptable behavior include:
 
 ## A note on technical disagreement
 
-This list makes falsifiable claims about how models were trained, and it removes entries that fail verification. Disputing an entry — including one you contributed — is a normal and welcome part of the process. Critique the evidence, not the person who submitted it. Contributors who correct their own entries are doing exactly what this project needs.
+This list makes falsifiable claims about how models were trained, and it removes entries that fail verification. Disputing an entry, including one you contributed, is a normal and welcome part of the process. Critique the evidence, not the person who submitted it. Contributors who correct their own entries are doing exactly what this project needs.
 
 ## Enforcement Responsibilities
 

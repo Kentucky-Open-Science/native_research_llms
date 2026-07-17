@@ -18,11 +18,11 @@ Models that pass the from-scratch rule but fall short of a verified-list require
 
 ## What this list is
 
-Everything here was **pretrained from scratch by a non-commercial institution** — it clears the hardest bar. It is not on the [main list](https://github.com/Kentucky-Open-Science/native_research_llms#readme) because it misses one of the verified requirements: **openly downloadable weights**, roughly **1B+ parameters**, and a **generative** (non-encoder) objective.
+Everything here was **pretrained from scratch by a non-commercial institution**, it clears the hardest bar. It is not on the [main list](https://github.com/Kentucky-Open-Science/native_research_llms#readme) because it misses one of the verified requirements: **openly downloadable weights**, roughly **1B+ parameters**, and a **generative** (non-encoder) objective.
 
-Nothing here is disqualified. These are held for the day the blocking condition changes — weights get released, a larger variant ships — at which point they move to the verified list. Models that fail the from-scratch rule itself are not tracked here; they are removed, per the [inclusion criteria]({% link reference/criteria.md %}).
+Nothing here is disqualified. These are held for the day the blocking condition changes, weights get released, a larger variant ships, at which point they move to the verified list. Models that fail the from-scratch rule itself are not tracked here; they are removed, per the [inclusion criteria]({% link reference/criteria.md %}).
 
-Full evidence for every entry — institution, from-scratch quote, source URL, license — lives in the repository's `_data/candidates.yml`.
+Full evidence for every entry, institution, from-scratch quote, source URL, license, lives in the repository's `_data/candidates.yml`.
 
 ## Weights not openly available
 
@@ -61,4 +61,4 @@ In scope by the criteria, but excluded from the verified generative lists. Group
 
 ## Promotion
 
-If you can show that one of these has crossed the line — open weights released, a 1B+ variant shipped — please [open a correction](https://github.com/Kentucky-Open-Science/native_research_llms/issues/new?template=correction.yml). The bar to move onto the verified list is the same public, checkable evidence the main list requires.
+If you can show that one of these has crossed the line, open weights released, a 1B+ variant shipped, please [open a correction](https://github.com/Kentucky-Open-Science/native_research_llms/issues/new?template=correction.yml). The bar to move onto the verified list is the same public, checkable evidence the main list requires.

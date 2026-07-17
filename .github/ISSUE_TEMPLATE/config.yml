@@ -2,4 +2,4 @@ blank_issues_enabled: true
 contact_links:
   - name: Inclusion criteria
     url: https://github.com/Kentucky-Open-Science/native_research_llms/blob/main/contributing.md
-    about: Read this before proposing a model — the from-scratch rule is applied strictly.
+    about: Read this before proposing a model, the from-scratch rule is applied strictly.

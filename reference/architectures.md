@@ -18,7 +18,7 @@ Structural specifications of natively pretrained academic models.
 
 ## How to read this table
 
-**"Base architecture" means the design, not the weights.** Nearly every model here reuses a published architecture — LLaMA, GPT-2, BLOOM — while training its parameters from random initialization. That is normal science and does not disqualify a model. It is also the single most common source of confusion about this list: "based on the Llama architecture" and "based on Llama" are different claims, and only the second one is disqualifying.
+**"Base architecture" means the design, not the weights.** Nearly every model here reuses a published architecture, LLaMA, GPT-2, BLOOM, while training its parameters from random initialization. That is normal science and does not disqualify a model. It is also the single most common source of confusion about this list: "based on the Llama architecture" and "based on Llama" are different claims, and only the second one is disqualifying.
 
 `Not disclosed` means the authors did not publish the value. It is not a gap for someone to fill with a plausible guess.
 
@@ -89,6 +89,6 @@ Sumi builds on generalized interpolating discrete diffusion, letting any token i
 
 **Architecture has converged; the differentiation moved elsewhere.** Nearly every model released since 2024 is a decoder-only transformer with grouped-query attention, rotary embeddings, and SwiGLU. If you sort this table by year, the right-hand columns stop varying.
 
-That convergence is the argument for the list's existence rather than against it. When architecture is a solved commodity, the remaining degrees of freedom are the corpus, the tokenizer, the data ordering, and the training discipline — every one of which is fixed at pretraining time and inherited, unexamined, by anything built on someone else's checkpoint. The [corpora table]({% link reference/corpora.md %}) is where these models actually differ.
+That convergence is the argument for the list's existence rather than against it. When architecture is a solved commodity, the remaining degrees of freedom are the corpus, the tokenizer, the data ordering, and the training discipline, every one of which is fixed at pretraining time and inherited, unexamined, by anything built on someone else's checkpoint. The [corpora table]({% link reference/corpora.md %}) is where these models actually differ.
 
 **The exceptions are informative.** The models that break the pattern break it deliberately and for stated reasons: Sumi's diffusion objective, OLMo Hybrid's Gated DeltaNet layers, SmallThinker's pre-attention routing for on-device prefetch, ALiBi in the older Nordic and Arabic models that needed length extrapolation before RoPE scaling matured. None of those changes is reachable by fine-tuning.

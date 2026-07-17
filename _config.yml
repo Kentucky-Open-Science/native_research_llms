@@ -16,7 +16,7 @@ exclude:
   - contributing.md
   - code-of-conduct.md
   - license
-  # Maintenance record, GitHub-facing only — not a site page (no front matter,
+  # Maintenance record, GitHub-facing only, not a site page (no front matter,
   # no nav entry). Kept in the repo and link-checked by CI, excluded from Pages.
   - huggingface-urls-to-verify.md
   - Gemfile
@@ -54,7 +54,7 @@ nav_external_links:
 footer_content: >-
   Released under
   <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>.
-  Corrections welcome — every entry on this list is meant to be falsifiable.
+  Corrections welcome, every entry on this list is meant to be falsifiable.
 
 plugins:
   - jekyll-seo-tag

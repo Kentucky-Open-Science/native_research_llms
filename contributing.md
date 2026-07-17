@@ -12,12 +12,12 @@ The model's weights must be initialized randomly and trained from a *tabula rasa
 
 A model is **not** eligible if it was warm-started from someone else's pretrained checkpoint. That includes:
 
-- Continued (or "continual") pretraining on a commercial base — training Llama 3.1 8B on a new language does not make a new from-scratch model.
+- Continued (or "continual") pretraining on a commercial base, training Llama 3.1 8B on a new language does not make a new from-scratch model.
 - Vocabulary expansion plus continued pretraining.
 - Fine-tuning, instruction tuning, RLHF, or LoRA adaptation of an existing base.
 - Distillation from a teacher model's outputs, where the student inherits the teacher's weights.
 
-Instruction-tuned or aligned *variants* of an eligible base model are fine to mention within that model's entry — the base is what qualifies.
+Instruction-tuned or aligned *variants* of an eligible base model are fine to mention within that model's entry, the base is what qualifies.
 
 If a model's provenance is ambiguous, it does not go on the list until it is resolved. "Probably from scratch" is not from scratch.
 
@@ -25,7 +25,7 @@ If a model's provenance is ambiguous, it does not go on the list until it is res
 
 The pretraining run must be led by a university, a non-profit research institute, a national laboratory, or a public research consortium. Examples of qualifying leads: ETH Zürich, Ai2, EleutherAI, Barcelona Supercomputing Center, Japan's National Institute of Informatics, AI Sweden.
 
-Industry *collaboration* is expected and fine — academic pretraining runs routinely depend on hardware partners and cloud credits. What matters is that the research lead and the scientific direction are academic. A model developed by a company's research division and merely published at a conference does not qualify.
+Industry *collaboration* is expected and fine, academic pretraining runs routinely depend on hardware partners and cloud credits. What matters is that the research lead and the scientific direction are academic. A model developed by a company's research division and merely published at a conference does not qualify.
 
 ### 3. Publicly documented
 
@@ -33,7 +33,7 @@ Every entry needs at least one canonical, resolving public link: a Hugging Face 
 
 Citations to private documents, unlisted Drive files, internal reports, or personal correspondence are not acceptable evidence. If the public cannot check the claim, it does not go on the list.
 
-Gated weights are acceptable *if* the gate is documented and the model is otherwise publicly described — some clinical models cannot release weights trained on protected health information. Mark these clearly.
+Gated weights are acceptable *if* the gate is documented and the model is otherwise publicly described, some clinical models cannot release weights trained on protected health information. Mark these clearly.
 
 ### 4. It's actually a language model
 
@@ -46,11 +46,11 @@ Causal decoder-only, encoder-decoder, encoder-only, and diffusion language model
 3. Match the existing format exactly:
 
    ```markdown
-   - [Model Name](https://huggingface.co/org/model) — One sentence, ending with a period. `Institution` `params` `year`
+   - [Model Name](https://huggingface.co/org/model), One sentence, ending with a period. `Institution` `params` `year`
    ```
 
 4. Keep the description to one sentence, factual and neutral. No marketing language, no "state-of-the-art", no "revolutionary". Say what it is and what makes it distinct.
-5. In your pull request description, include **evidence for the from-scratch claim** — a link to the paper section, model card statement, or training config that shows random initialization. This is the one thing every PR is checked on, so please don't skip it.
+5. In your pull request description, include **evidence for the from-scratch claim**, a link to the paper section, model card statement, or training config that shows random initialization. This is the one thing every PR is checked on, so please don't skip it.
 6. If your model belongs in the reference tables, update `reference/architectures.md` and `reference/corpora.md` too. Leave a cell as `Not disclosed` rather than guessing.
 
 ## Corrections

@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Corrections are as valuable as additions. If an entry on this list is wrong, we want to fix it — including by removing it.
+        Corrections are as valuable as additions. If an entry on this list is wrong, we want to fix it, including by removing it.
 
   - type: input
     id: entry
