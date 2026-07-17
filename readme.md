@@ -12,10 +12,26 @@ Entries marked **⚠** carry a caveat worth reading before you rely on them — 
 
 ## Contents
 
+- [Rankings](#rankings)
 - [Universities](#universities)
 - [Research institutes and national labs](#research-institutes-and-national-labs)
 - [Public research consortia](#public-research-consortia)
 - [Related](#related)
+
+## Rankings
+
+The headline metric is **IFEval strict-avg** — instruction-following accuracy, the Open LLM Leaderboard's "IFEval" column — measured against the original-ChatGPT line, **GPT-3.5-turbo ≈ 59.3**. It asks one question: *has a from-scratch university model reached what made ChatGPT usable?*
+
+| IFEval (strict-avg) | University model | Institution |
+|--:|:--|:--|
+| **74.9** | Jais 2 (70B) | MBZUAI |
+| *59.3* | *— GPT-3.5-turbo, the reference line —* | *OpenAI* |
+| **51.5** | LLM360 K2 | MBZUAI |
+| **6.0** | TinyLlama-1.1B | SUTD |
+
+Only three university models have a comparable published IFEval, and **Jais 2 (MBZUAI) is the one that clears the GPT-3.5 line**. Every other university model has no published IFEval and **needs evaluation** — that gap is the main finding, not a footnote. (Apertus 75.2 and OLMo 3 89.0 report IFEval in loose/inst formats that are not comparable to strict-avg, so they are not on the line.)
+
+Full tables — research institutes, commercial anchors (GPT-4o, Llama 3.1, Qwen2.5), MMLU, format caveats, and the complete needs-eval list — are on the [rankings page](rankings.md).
 
 ## Universities
 
