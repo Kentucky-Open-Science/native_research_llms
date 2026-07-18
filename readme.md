@@ -75,7 +75,7 @@ The academic list. Led by a university; a commercial co-developer is noted inlin
 
 ### Biomedical and clinical
 
-- [KOS-V4](https://huggingface.co/Kentucky-Open-Science/KOS-V4-Instruct) - The University of Kentucky College of Medicine's 3B decoder trained from scratch on 180B tokens of medical text (base KOS-V4-Base, 24 GPUs). Its GRPO-tuned Instruct variant scores 61.6 IFEval strict-avg, clearing the original GPT-3.5-turbo. **⚠** Non-commercial, research-only (CC BY-NC-SA).
+- [KOS-V4](https://huggingface.co/collections/Kentucky-Open-Science/kos-v4-llm) - The University of Kentucky College of Medicine's 3B decoder trained from scratch on 180B tokens of medical text (base KOS-V4-Base, 24 GPUs). Its GRPO-tuned Instruct variant scores 61.6 IFEval strict-avg, clearing the original GPT-3.5-turbo. **⚠** Non-commercial, research-only (CC BY-NC-SA).
 - [BioMedLM](https://huggingface.co/stanford-crfm/BioMedLM) - Stanford CRFM's 2.7B trained solely on PubMed with a purpose-built 28,896-token biomedical vocabulary, small enough to deploy privately. **⚠** The BLOOM RAIL license forbids using it to provide medical advice.
 - [GatorTronGPT](https://github.com/uf-hobi-informatics-lab/GatorTronGPT) - University of Florida's 5B and 20B trained on 277B words including 82B words of UF Health clinical notes. **⚠** Weights gated behind UF licensing because of PHI provenance, a documented data-protection exception; the open artifact is the 345M GatorTronS.
 
