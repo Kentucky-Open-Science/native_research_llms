@@ -28,17 +28,24 @@ Two ground rules. **IFEval is an instruction-following metric**, so every ranked
 
 ## Universities
 
-IFEval strict-avg, university-led instruction models. Four have a published, comparable number.
+IFEval strict-avg and MMLU (5-shot), university-led instruction models. Eleven now carry a comparable number; **eight we measured ourselves** on a pristine lm-eval-harness (2026-07-18).
 
-| IFEval | Model (instruction-tuned) | University | Source |
-|--:|:--|:--|:--|
-| **74.9** | Jais-2-70B-Chat | MBZUAI | card (EN; AR 70.6) |
-| **61.6** | KOS-V4-Instruct (3B) | University of Kentucky | card (own harness, OLL-calibrated) |
-| *55.9* | *GPT-3.5-turbo-1106 (the line)* | *OpenAI* | *InternLM2 report* |
-| **51.5** | LLM360 K2-Chat | MBZUAI | Open LLM Leaderboard |
-| **6.0** | TinyLlama-1.1B-Chat | SUTD | Open LLM Leaderboard |
+| IFEval | MMLU | Model (instruction-tuned) | University | Source |
+|--:|--:|:--|:--|:--|
+| **74.9** | - | Jais-2-70B-Chat | MBZUAI | card |
+| **70.8** | 61.1 | marin-8b-instruct | Stanford | measured |
+| **61.6** | 27.8 | KOS-V4-Instruct (3B) | University of Kentucky | card (we measured 60.6) |
+| **61.5** | 52.8 | YuLan-Mini-Instruct | Renmin | measured |
+| *55.9* | - | *GPT-3.5-turbo-1106 (the line)* | *OpenAI* | *InternLM2 report* |
+| 54.1 | 52.5 | LLäMmlein-7B-chat | Würzburg | measured |
+| 51.5 | - | LLM360 K2-Chat | MBZUAI | Open LLM Leaderboard |
+| 34.6 | pending | Poro-34B-chat | U Turku | measured |
+| 21.5 | 40.7 | Minerva-7B-instruct | Sapienza | measured |
+| 19.9 | 24.0 | CroissantLLMChat | CentraleSupélec | measured |
+| 15.0 | 25.9 | Tucano-2b4-Instruct | U Bonn | measured |
+| 6.0 | - | TinyLlama-1.1B-Chat | SUTD | Open LLM Leaderboard |
 
-**Two university models clear the original-ChatGPT line: Jais-2-70B-Chat (MBZUAI, 74.9) and KOS-V4-Instruct (University of Kentucky, 61.6)**, the latter a from-scratch 3B trained on 180B tokens and 24 GPUs, which is a notable result for that budget rather than a claim on the field. LLM360 K2-Chat (51.5) sits just under the line, level with Llama-2-70b-chat, GPT-3.5's open contemporary.
+**Four university models clear the original-ChatGPT line: Jais-2-70B-Chat (74.9), marin-8b-instruct (70.8), KOS-V4-Instruct (61.6), and YuLan-Mini-Instruct (61.5).** KOS-V4 and YuLan-Mini are a statistical tie (a 0.9-point gap against a 2.14-point stderr). The two benchmarks rank the set almost independently: KOS-V4 is 3rd on instruction-following but near the MMLU chance floor, an instruction model by design and not a knowledge model, while Poro-34B is the largest model here (34B) yet places mid-pack, below models a third its size. Multilingual models (Poro, Minerva, Croissant, Tucano, LLäMmlein) are measured on English and understate their designed capability.
 
 Reported, but **not** in strict-avg format, so not placed on the line:
 
@@ -47,11 +54,13 @@ Reported, but **not** in strict-avg format, so not placed on the line:
 | 85.8 | SmallThinker-21BA3B-Instruct | SJTU | unlabeled |
 | 75.2 | Apertus-70B-Instruct | EPFL / ETH Zürich | prompt-loose |
 
-## The gap: needs evaluation
+## What is left
 
-Every other **university** model has **no published IFEval in any format**. This is the finding, not a footnote: the field has barely measured its own instruction-following on a common axis.
+The eight measurements above closed most of the gap. What remains is less "unmeasured" than "not yet runnable":
 
-Awaiting evaluation: Marin (Stanford), Minerva (Sapienza), Jais-13b (MBZUAI), CroissantLLM (CentraleSupélec), Fugaku-LLM (Tokyo Tech, Tohoku), Poro and Viking (U Turku), weblab-10b and Tanuki (U Tokyo), LLäMmlein (Würzburg), YuLan-Base and YuLan-Mini (Renmin), OpenLLaMA (UC Berkeley), DCLM (U Washington), FinGPT (U Turku), Tucano (U Bonn), LLaDA (Renmin), LLM360 Amber and Crystal (MBZUAI), and the base-only research models (Sumi, Mamba, H3, Based, Plaid, GLA), where instruction-following may not apply.
+- **Deferred, gated (2):** Jais-13b-chat (MBZUAI) and Fugaku-LLM-13B-instruct (Tokyo Tech / Tohoku) return HTTP 403 until a license is accepted.
+- **Excluded, not runnable as-is (7):** AmberChat, CrystalChat (MBZUAI), weblab-10b-instruction-sft (U Tokyo), and YuLan-Chat-3-12b (Renmin) publish no chat template; LLaDA-8B-Instruct (Renmin) is a masked-diffusion LM with no autoregressive loglikelihood for `lm-eval`; Tanuki-8x8B (U Tokyo) ships remote code incompatible with current `transformers`; apple/DCLM-7B-IT (U Washington) no longer resolves.
+- **Base-only:** OpenLLaMA, FinGPT, Viking, AraGPT2, the biomedical models, and the base research models (Sumi, Mamba, H3, Based, Plaid, GLA) have no instruct variant to evaluate.
 
 ## Research institutes and national labs
 
@@ -78,6 +87,7 @@ Instruction / chat models, strict-avg unless noted.
 |--:|:--|:--|
 | 86.7 | Llama-3.1-70B-Instruct | strict-avg |
 | 86.4 | Qwen2.5-72B-Instruct | strict-avg |
+| 84.7 | Qwen3-4B-Instruct-2507 | strict-avg (our peer control) |
 | 81.0 | GPT-4o | unlabeled |
 | 80.2 | GPT-4 | strict-avg (derived) |
 | 74.4 | gemma-2-9b-it | strict-avg |
@@ -88,9 +98,8 @@ Instruction / chat models, strict-avg unless noted.
 
 ## Method and caveats
 
-- **Source of truth** for open models is the Open LLM Leaderboard v2 "IFEval" value (strict-avg). Where a model is not on the board, the number comes from its own paper or card, and its format is labeled; where a card gives both strict sub-metrics (ALLaM, Jais 2, KOS-V4), strict-avg is computed as their mean.
-- **GPT-3.5-turbo-1106** strict sub-metrics (50.5 / 61.2) are from the InternLM2 report (arXiv:2403.17297); GPT-3.5 snapshots differ (0613 around 57, 1106 = 55.9, 0125 around 49), so the snapshot is named.
-- **KOS-V4-Instruct's 61.6** is measured on the authors' own copy of the harness, calibrated to the leaderboard (they measure Qwen2.5-3B at 64.0 against the board's 64.7).
-- **GPT-4o's 81** is OpenAI's single figure with no strict/loose breakdown, so it is not verified strict-avg.
-- MMLU and other benchmarks are kept as secondary context in the repository's `_data/evals.yml`; they are not the ranking axis.
-- Everything marked *needs evaluation* is a candidate to run on a single common harness so the comparison is finally apples-to-apples rather than self-reported.
+- **Measured rows** (Source = "measured") are from a pristine EleutherAI lm-evaluation-harness 0.4.12 run (univ-baseline, 2026-07-18): stock `ifeval` (google/IFEval, 541 prompts, 0-shot, greedy, chat template applied) and stock `mmlu` (cais/mmlu, 57 subjects, 5-shot, `acc`). Two controls passed: Qwen3-4B reproduced within 1.5 points, and KOS-V4's MMLU reproduced to four decimals across two harness builds.
+- **Measurement error.** IFEval prompt-strict stderr is ±2.14 points on 541 prompts, so differences under about 2 points are not distinguishable (KOS-V4 and YuLan-Mini are a tie by this measure).
+- **Multilingual models are scored on English.** Poro (Finnish), Minerva (Italian), Croissant (French), Tucano (Portuguese), and LLäMmlein (German) are measured on English IFEval and MMLU; the scores understate designed capability and are not a general quality ranking.
+- **Other open-model rows** come from the Open LLM Leaderboard v2 "IFEval" column (strict-avg); card-derived rows (Jais 2, KOS-V4) compute strict-avg from the two strict sub-metrics. **KOS-V4-Instruct** is listed at its card value 61.6; our own pristine-harness run measured 60.63.
+- **GPT-3.5-turbo-1106** strict sub-metrics (50.5 / 61.2) are from the InternLM2 report (arXiv:2403.17297); GPT-3.5 snapshots differ (0613 around 57, 1106 = 55.9, 0125 around 49), so the snapshot is named. **GPT-4o's 81** is OpenAI's single figure with no strict/loose breakdown, so it is not verified strict-avg.

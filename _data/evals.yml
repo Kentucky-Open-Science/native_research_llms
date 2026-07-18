@@ -12,19 +12,25 @@
 # SECONDARY field only.
 #
 # status:
+#   measured   = IFEval strict-avg we measured on a pristine lm-eval-harness
+#                (univ-baseline 2026-07-18, lm-eval 0.4.12); directly OLL-comparable.
 #   oll        = IFEval strict-avg straight from the Open LLM Leaderboard (gold).
 #   strict-avg = strict-avg computed from the card's two strict sub-metrics.
 #   mismatch   = an IFEval number exists but in a NON-strict-avg format (loose,
 #                prompt-strict, or unlabeled) -> NOT comparable; shown, not ranked.
-#   needs-eval = no published IFEval in any format. Candidate for us to run.
+#   deferred   = instruct variant exists but gated (needs license acceptance).
+#   excluded   = instruct variant exists but not runnable as-is (no chat template,
+#                masked-diffusion, broken deps/repo).
+#   base-only  = no instruct variant exists; instruction-following N/A.
 # fmt: strict-avg | loose | prompt-strict | unlabeled | none
+# mmlu: 5-shot acc as a percentage (chance floor 25).
 # ---------------------------------------------------------------------------
 
 meta:
   updated: "2026-07-17"
   headline_metric: "IFEval strict-avg (Open LLM Leaderboard v2 'IFEval' column)"
   anchor: "GPT-3.5-turbo-1106 strict-avg = 55.9 (the original-ChatGPT line; InternLM2 report 50.5/61.2)"
-  finding: "Across all verified models, IFEval strict-avg exists for only ~11. Of the UNIVERSITY models, 4 have a comparable strict-avg (Jais 2, KOS-V4, LLM360 K2, TinyLlama); TWO clear the GPT-3.5 line, Jais 2 (74.9) and KOS-V4-Instruct (61.6, a from-scratch 3B). The rest have no published IFEval and must be evaluated by us."
+  finding: "We measured 8 previously-unscored university instruction models on a pristine lm-eval-harness (univ-baseline, 2026-07-18). 11 university models now carry a comparable strict-avg. FOUR clear the GPT-3.5 line (55.9): Jais 2 (74.9), Marin (70.8), KOS-V4-Instruct (61.6), YuLan-Mini (61.5). IFEval and MMLU rank the set almost independently. Multilingual models are on ENGLISH benchmarks and understate their designed capability. Remaining gaps are gated (Jais-13b, Fugaku), not-runnable-as-is (AmberChat, CrystalChat, weblab, YuLan-Chat, LLaDA, Tanuki, DCLM), and base-only models."
   format_warning: "Do NOT mix formats. loose > strict, and prompt-strict != strict-avg. Apertus(loose), OLMo 3(inst-loose), InternLM3(prompt-strict), SmallThinker(unlabeled) are shown but NOT ranked against the strict-avg line."
 
 # Commercial reference line (strict-avg unless noted). GPT-3.5 is THE anchor.
@@ -42,43 +48,47 @@ anchors:
 # UNIVERSITIES, the academic ranking (first).
 # =========================================================================
 university:
-  # -- comparable strict-avg --
-  - { name: "Jais 2", inst: "MBZUAI", variant: "Jais-2-70B-Chat", ifeval: 74.9, fmt: strict-avg, status: strict-avg, mmlu: null, note: "EN; AR 70.6. Computed from card (70.78/78.93).", src: "https://huggingface.co/inceptionai/Jais-2-70B-Chat" }
-  - { name: "KOS-V4-Instruct", inst: "University of Kentucky", variant: "KOS-V4-Instruct (3B)", ifeval: 61.6, fmt: strict-avg, status: strict-avg, note: "from-scratch 3B, 180B tokens, 24 GPUs; GRPO-tuned (49.4 SFT to 61.6); clears GPT-3.5-turbo-1106 (55.9); own harness, calibrated to OLL (Qwen2.5-3B 64.0 vs OLL 64.7)", src: "https://huggingface.co/Kentucky-Open-Science/KOS-V4-Instruct" }
-  - { name: "LLM360 K2", inst: "MBZUAI", variant: "K2-Chat", ifeval: 51.5, fmt: strict-avg, status: oll, mmlu: null, src: "OLL v2" }
-  - { name: "TinyLlama-1.1B", inst: "SUTD", variant: "TinyLlama-1.1B-Chat-v1.0", ifeval: 6.0, fmt: strict-avg, status: oll, mmlu: "25 (chance)", src: "OLL v2" }
+  # -- comparable strict-avg (ranked). 8 measured on a pristine lm-eval-harness
+  #    (univ-baseline 2026-07-18); others from OLL / card. Multilingual models are
+  #    on ENGLISH benchmarks and understate their designed capability. --
+  - { name: "Jais 2", inst: "MBZUAI", variant: "Jais-2-70B-Chat", ifeval: 74.9, mmlu: null, fmt: strict-avg, status: strict-avg, note: "EN; AR 70.6; card (70.78/78.93)", src: "https://huggingface.co/inceptionai/Jais-2-70B-Chat" }
+  - { name: "Marin 8B", inst: "Stanford", variant: "marin-8b-instruct", ifeval: 70.83, mmlu: 61.12, fmt: strict-avg, status: measured, src: "univ-baseline 2026-07-18" }
+  - { name: "KOS-V4-Instruct", inst: "University of Kentucky", variant: "KOS-V4-Instruct (3B)", ifeval: 61.6, mmlu: 27.82, fmt: strict-avg, status: strict-avg, note: "IFEval 61.6 from card; univ-baseline measured 60.63 (tied with YuLan-Mini within stderr); MMLU near chance by design, not a knowledge model", src: "https://huggingface.co/Kentucky-Open-Science/KOS-V4-Instruct" }
+  - { name: "YuLan-Mini", inst: "Renmin U", variant: "YuLan-Mini-Instruct", ifeval: 61.51, mmlu: 52.78, fmt: strict-avg, status: measured, note: "tied with KOS-V4 (0.09 gap, 2.14 stderr)", src: "univ-baseline 2026-07-18" }
+  - { name: "LLäMmlein 7B", inst: "U Würzburg", variant: "LLaMmlein_7B_chat", ifeval: 54.07, mmlu: 52.52, fmt: strict-avg, status: measured, note: "German, on English benchmarks", src: "univ-baseline 2026-07-18" }
+  - { name: "LLM360 K2", inst: "MBZUAI", variant: "K2-Chat", ifeval: 51.5, mmlu: null, fmt: strict-avg, status: oll, src: "OLL v2" }
+  - { name: "Poro 34B", inst: "TurkuNLP (U Turku)", variant: "Poro-34B-chat", ifeval: 34.63, mmlu: "pending", fmt: strict-avg, status: measured, note: "Finnish, on English benchmarks; largest model in the set", src: "univ-baseline 2026-07-18" }
+  - { name: "Minerva 7B", inst: "Sapienza", variant: "Minerva-7B-instruct-v1.0", ifeval: 21.51, mmlu: 40.71, fmt: strict-avg, status: measured, note: "Italian, on English benchmarks", src: "univ-baseline 2026-07-18" }
+  - { name: "CroissantLLM", inst: "CentraleSupélec", variant: "CroissantLLMChat-v0.1", ifeval: 19.94, mmlu: 24.01, fmt: strict-avg, status: measured, note: "French, on English benchmarks", src: "univ-baseline 2026-07-18" }
+  - { name: "Tucano", inst: "U Bonn", variant: "Tucano-2b4-Instruct", ifeval: 14.95, mmlu: 25.89, fmt: strict-avg, status: measured, note: "Portuguese, on English benchmarks", src: "univ-baseline 2026-07-18" }
+  - { name: "TinyLlama-1.1B", inst: "SUTD", variant: "TinyLlama-1.1B-Chat-v1.0", ifeval: 6.0, mmlu: "25 (chance)", fmt: strict-avg, status: oll, src: "OLL v2" }
   # -- IFEval exists but wrong format (NOT ranked against strict-avg) --
   - { name: "Apertus", inst: "EPFL, ETH Zürich", variant: "70B/8B-Instruct-2509", ifeval: 75.2, fmt: loose, status: mismatch, mmlu: "65.2 base", note: "prompt-LOOSE (8B 71.7); strict would be lower", src: "https://arxiv.org/abs/2509.14233" }
   - { name: "SmallThinker", inst: "SJTU", variant: "21BA3B-Instruct", ifeval: 85.77, fmt: unlabeled, status: mismatch, note: "card column unlabeled strict/loose", src: "https://arxiv.org/abs/2507.20984" }
-  # -- no published IFEval (needs-eval) --
-  - { name: "Marin 8B", inst: "Stanford", status: needs-eval, mmlu: "74.7 base (32B)" }
-  - { name: "LLM360 Amber", inst: "MBZUAI", variant: "AmberChat", status: needs-eval, note: "not on OLL" }
-  - { name: "LLM360 Crystal", inst: "MBZUAI", variant: "CrystalChat", status: needs-eval, note: "not on OLL" }
-  - { name: "Jais", inst: "MBZUAI", variant: "jais-13b-chat", status: needs-eval, mmlu: null }
-  - { name: "Minerva", inst: "Sapienza", status: needs-eval, mmlu: "36.2 (Italian)" }
-  - { name: "CroissantLLM", inst: "CentraleSupélec", status: needs-eval }
-  - { name: "Fugaku-LLM", inst: "Tokyo Tech, Tohoku", status: needs-eval }
-  - { name: "Poro 34B", inst: "TurkuNLP (U Turku)", status: needs-eval }
-  - { name: "Viking", inst: "TurkuNLP (U Turku)", status: needs-eval }
-  - { name: "weblab-10b", inst: "U Tokyo", status: needs-eval }
-  - { name: "Tanuki", inst: "U Tokyo", status: needs-eval }
-  - { name: "LLäMmlein", inst: "U Würzburg", status: needs-eval }
-  - { name: "YuLan-Base-12B", inst: "Renmin U", status: needs-eval, mmlu: "51.3 base" }
-  - { name: "YuLan-Mini", inst: "Renmin U", status: needs-eval, mmlu: "49.1 base" }
-  - { name: "OpenLLaMA", inst: "UC Berkeley", status: needs-eval, note: "base only" }
-  - { name: "DCLM-7B", inst: "U Washington", status: needs-eval, note: "base only" }
-  - { name: "FinGPT", inst: "U Turku", status: needs-eval, note: "base only" }
-  - { name: "Tucano", inst: "U Bonn", status: needs-eval, note: "base only" }
-  - { name: "AraGPT2", inst: "AUB", status: needs-eval, note: "2020 base; likely N/A" }
-  - { name: "BioMedLM", inst: "Stanford", status: needs-eval, note: "domain; likely N/A" }
-  - { name: "GatorTronGPT", inst: "U Florida", status: needs-eval, note: "clinical; likely N/A" }
-  - { name: "Sumi", inst: "Tohoku", status: needs-eval, note: "base diffusion" }
-  - { name: "Mamba / Mamba-2", inst: "CMU, Princeton", status: needs-eval, note: "base SSM; likely N/A" }
-  - { name: "H3", inst: "Stanford", status: needs-eval, note: "base; likely N/A" }
-  - { name: "Based", inst: "Stanford", status: needs-eval, note: "base; likely N/A" }
-  - { name: "Plaid", inst: "Stanford", status: needs-eval, note: "base diffusion" }
-  - { name: "LLaDA", inst: "Renmin U", variant: "LLaDA-8B-Instruct", status: needs-eval, note: "instruct exists, no IFEval published" }
-  - { name: "GLA", inst: "MIT", status: needs-eval, note: "base" }
+  # -- deferred: instruct variant exists but gated (needs license acceptance) --
+  - { name: "Jais", inst: "MBZUAI", variant: "jais-13b-chat", status: deferred, note: "gated HTTP 403" }
+  - { name: "Fugaku-LLM", inst: "Tokyo Tech, Tohoku", variant: "Fugaku-LLM-13B-instruct", status: deferred, note: "gated HTTP 403" }
+  # -- excluded: instruct variant exists but not runnable as-is --
+  - { name: "LLM360 Amber", inst: "MBZUAI", variant: "AmberChat", status: excluded, note: "no published chat template" }
+  - { name: "LLM360 Crystal", inst: "MBZUAI", variant: "CrystalChat", status: excluded, note: "no published chat template" }
+  - { name: "weblab-10b", inst: "U Tokyo", variant: "weblab-10b-instruction-sft", status: excluded, note: "no published chat template" }
+  - { name: "YuLan-Base-12B", inst: "Renmin U", variant: "YuLan-Chat-3-12b", mmlu: "51.3 base", status: excluded, note: "no published chat template" }
+  - { name: "LLaDA", inst: "Renmin U", variant: "LLaDA-8B-Instruct", status: excluded, note: "masked diffusion; no AR loglikelihood for lm-eval" }
+  - { name: "Tanuki", inst: "U Tokyo", variant: "Tanuki-8x8B-dpo-v1.0", status: excluded, note: "remote code incompatible with current transformers" }
+  - { name: "DCLM-7B", inst: "U Washington", variant: "apple/DCLM-7B-IT", status: excluded, note: "repo does not resolve / gated" }
+  # -- base-only: no instruct variant; instruction-following N/A --
+  - { name: "OpenLLaMA", inst: "UC Berkeley", status: base-only }
+  - { name: "FinGPT", inst: "U Turku", status: base-only }
+  - { name: "Viking", inst: "TurkuNLP (U Turku)", status: base-only }
+  - { name: "AraGPT2", inst: "AUB", status: base-only, note: "2020" }
+  - { name: "BioMedLM", inst: "Stanford", status: base-only, note: "domain" }
+  - { name: "GatorTronGPT", inst: "U Florida", status: base-only, note: "clinical" }
+  - { name: "Sumi", inst: "Tohoku", status: base-only, note: "diffusion" }
+  - { name: "Mamba / Mamba-2", inst: "CMU, Princeton", status: base-only }
+  - { name: "H3", inst: "Stanford", status: base-only }
+  - { name: "Based", inst: "Stanford", status: base-only }
+  - { name: "Plaid", inst: "Stanford", status: base-only, note: "diffusion" }
+  - { name: "GLA", inst: "MIT", status: base-only }
 
 # =========================================================================
 # RESEARCH INSTITUTES & NATIONAL LABS, in the mix, not academic.

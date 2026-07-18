@@ -22,15 +22,22 @@ Entries marked **⚠** carry a caveat worth reading before you rely on them, usu
 
 The headline metric is **IFEval strict-avg** (instruction-following accuracy, the Open LLM Leaderboard's "IFEval" column), measured against the original-ChatGPT line, **GPT-3.5-turbo-1106 = 55.9**. It asks one question: *has a from-scratch university model reached what made ChatGPT usable?*
 
-| IFEval (strict-avg) | University model | Institution |
-|--:|:--|:--|
-| **74.9** | Jais 2 (70B) | MBZUAI |
-| **61.6** | KOS-V4-Instruct (3B) | University of Kentucky |
-| *55.9* | *GPT-3.5-turbo-1106, the reference line* | *OpenAI* |
-| **51.5** | LLM360 K2 | MBZUAI |
-| **6.0** | TinyLlama-1.1B | SUTD |
+| IFEval | MMLU | University instruction model | Institution |
+|--:|--:|:--|:--|
+| **74.9** | - | Jais-2-70B-Chat | MBZUAI |
+| **70.8** | 61.1 | Marin 8B Instruct | Stanford |
+| **61.6** | 27.8 | KOS-V4-Instruct (3B) | University of Kentucky |
+| **61.5** | 52.8 | YuLan-Mini-Instruct | Renmin |
+| *55.9* | - | *GPT-3.5-turbo-1106 (the line)* | *OpenAI* |
+| 54.1 | 52.5 | LLäMmlein-7B-chat | Würzburg |
+| 51.5 | - | LLM360 K2-Chat | MBZUAI |
+| 34.6 | \* | Poro-34B-chat | U Turku |
+| 21.5 | 40.7 | Minerva-7B-instruct | Sapienza |
+| 19.9 | 24.0 | CroissantLLMChat | CentraleSupélec |
+| 15.0 | 25.9 | Tucano-2b4-Instruct | U Bonn |
+| 6.0 | - | TinyLlama-1.1B-Chat | SUTD |
 
-Two university models clear the original-ChatGPT line: Jais 2 (MBZUAI, 74.9) and, from a 3B trained on 180B tokens and 24 GPUs, **KOS-V4-Instruct (University of Kentucky, 61.6)**. Four university models have a comparable published IFEval; every other one has none and **needs evaluation**, which is the main finding rather than a footnote. (Apertus 75.2 and OLMo 3 89.0 report IFEval in loose/inst formats that are not comparable to strict-avg, so they are not on the line.)
+IFEval strict-avg and MMLU (5-shot accuracy), as percentages; 8 of these we measured on a common pristine harness on 2026-07-18. **Four university models clear the original-ChatGPT line: Jais 2 (74.9), Marin (70.8), KOS-V4-Instruct (61.6), and YuLan-Mini (61.5).** The two benchmarks rank the set almost independently: KOS-V4 follows instructions well (3rd) but sits near the MMLU chance floor by design (it is an instruction model, not a knowledge model), while Poro-34B is the largest model here yet mid-pack on instructions. Multilingual models (Poro, Minerva, Croissant, Tucano, LLäMmlein) are measured on English and understate their designed capability. (Apertus 75.2 and SmallThinker 85.8 report IFEval in loose or unlabeled formats that are not strict-avg, so they are off the line; \* = Poro MMLU pending.)
 
 The full tables (research institutes, commercial anchors, MMLU, format caveats, and the complete needs-eval list) are on the [rankings page](rankings.md).
 
