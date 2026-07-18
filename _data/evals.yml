@@ -33,16 +33,29 @@ meta:
   finding: "We measured 8 previously-unscored university instruction models on a pristine lm-eval-harness (univ-baseline, 2026-07-18). 11 university models now carry a comparable strict-avg. FOUR clear the GPT-3.5 line (55.9): Jais 2 (74.9), Marin (70.8), KOS-V4-Instruct (61.6), YuLan-Mini (61.5). IFEval and MMLU rank the set almost independently. Multilingual models are on ENGLISH benchmarks and understate their designed capability. Remaining gaps are gated (Jais-13b, Fugaku), not-runnable-as-is (AmberChat, CrystalChat, weblab, YuLan-Chat, LLaDA, Tanuki, DCLM), and base-only models."
   format_warning: "Do NOT mix formats. loose > strict, and prompt-strict != strict-avg. Apertus(loose), OLMo 3(inst-loose), InternLM3(prompt-strict), SmallThinker(unlabeled) are shown but NOT ranked against the strict-avg line."
 
-# Commercial reference line (strict-avg unless noted). GPT-3.5 is THE anchor.
+# Reference models: comparable-scale, GPT-3.5-generation peers (from the KOS-V4
+# card's "IFEval in context"). GPT-3.5-turbo-1106 is THE anchor. fmt:estimate =
+# strict-avg estimated from a published loose/AVG4 figure. Frontier models are a
+# different scale/generation and are deliberately NOT the comparison set here
+# (for scale: GPT-4o ~81, Llama-3.1-70B ~87, Qwen2.5-72B ~86).
 anchors:
-  - { name: "GPT-4", ifeval: 80.2, fmt: strict-avg, note: "derived from IFEval paper (76.9/83.6)", src: "https://arxiv.org/abs/2311.07911" }
-  - { name: "GPT-4o", ifeval: 81.0, fmt: unlabeled, note: "OpenAI single figure; strict/loose not disclosed", src: "https://openai.com/index/gpt-4-1/" }
-  - { name: "Qwen2.5-72B-Instruct", ifeval: 86.4, fmt: strict-avg, src: "OLL v2" }
-  - { name: "Llama-3.1-70B-Instruct", ifeval: 86.7, fmt: strict-avg, src: "OLL v2" }
-  - { name: "gemma-2-9b-it", ifeval: 74.4, fmt: strict-avg, src: "OLL v2" }
-  - { name: "GPT-3.5-turbo-1106", ifeval: 55.9, fmt: strict-avg, note: "ANCHOR (original ChatGPT); prompt-strict 50.5 / inst-strict 61.2", src: "InternLM2 report arXiv:2403.17297" }
-  - { name: "Mistral-7B-Instruct-v0.2", ifeval: 55.0, fmt: strict-avg, src: "OLL v2" }
-  - { name: "Llama-2-70b-chat", ifeval: 49.6, fmt: strict-avg, note: "GPT-3.5 contemporary", src: "OLL v2" }
+  - { name: "Llama-3.2-3B-Instruct", ifeval: 73.9, params: "3.2B", fmt: strict-avg, src: "KOS-V4 card" }
+  - { name: "Qwen2.5-3B-Instruct", ifeval: 64.7, params: "3.0B", fmt: strict-avg, src: "OLL v2" }
+  - { name: "Phi-3-medium-4k-instruct", ifeval: 64.2, params: "14B", fmt: strict-avg, src: "KOS-V4 card" }
+  - { name: "Yi-1.5-9B-Chat", ifeval: 60.5, params: "8.8B", fmt: strict-avg, src: "KOS-V4 card" }
+  - { name: "Phi-3.5-mini-instruct", ifeval: 57.7, params: "3.8B", fmt: strict-avg, src: "KOS-V4 card" }
+  - { name: "GPT-3.5-turbo-0613", ifeval: 57, params: "~20B", fmt: estimate, src: "KOS-V4 card" }
+  - { name: "Phi-3-mini-4k-instruct", ifeval: 56.1, params: "3.8B", fmt: strict-avg, src: "KOS-V4 card" }
+  - { name: "GPT-3.5-turbo-1106", ifeval: 55.9, params: "~20B", fmt: strict-avg, note: "ANCHOR (original ChatGPT); 50.5/61.2", src: "InternLM2 report arXiv:2403.17297" }
+  - { name: "Mistral-7B-Instruct-v0.2", ifeval: 55.0, params: "7.2B", fmt: strict-avg, src: "OLL v2" }
+  - { name: "Mistral-7B-Instruct-v0.3", ifeval: 54.7, params: "7.2B", fmt: strict-avg, src: "KOS-V4 card" }
+  - { name: "gemma-1.1-7b-it", ifeval: 50.4, params: "8.5B", fmt: strict-avg, src: "KOS-V4 card" }
+  - { name: "zephyr-7b-beta", ifeval: 49.5, params: "7.2B", fmt: strict-avg, src: "KOS-V4 card" }
+  - { name: "GPT-3.5-turbo-0125", ifeval: 49, params: "~20B", fmt: estimate, src: "KOS-V4 card" }
+  - { name: "Llama-3.1-8B-Instruct", ifeval: 44.3, params: "8.0B", fmt: strict-avg, src: "KOS-V4 card" }
+  - { name: "Qwen1.5-7B-Chat", ifeval: 43.7, params: "7.7B", fmt: strict-avg, src: "KOS-V4 card" }
+  - { name: "Llama-2-13b-chat", ifeval: 39.8, params: "13B", fmt: strict-avg, src: "KOS-V4 card" }
+  - { name: "Qwen1.5-4B-Chat", ifeval: 31.6, params: "4.0B", fmt: strict-avg, src: "KOS-V4 card" }
 
 # =========================================================================
 # UNIVERSITIES, the academic ranking (first).

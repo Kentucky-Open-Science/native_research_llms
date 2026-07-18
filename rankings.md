@@ -79,22 +79,31 @@ Not universities, shown for context. Instruction-tuned variants; these have more
 
 Format-mismatched (not on the line): OLMo-3-32B-Think 89.0 (inst-loose, Ai2), InternLM3-8B-instruct 79.3 (prompt-strict, Shanghai AI Lab).
 
-## Commercial reference line
+## Reference models
 
-Instruction / chat models, strict-avg unless noted.
+Not universities. A comparable-scale, GPT-3.5-generation reference set (the KOS-V4 card's "IFEval in context"), so the university numbers above sit against peers rather than the current frontier. A `~` marks a strict-avg estimated from a published loose or AVG4 figure, or an unofficial parameter count.
 
-| IFEval | Model | Format |
-|--:|:--|:--|
-| 86.7 | Llama-3.1-70B-Instruct | strict-avg |
-| 86.4 | Qwen2.5-72B-Instruct | strict-avg |
-| 84.7 | Qwen3-4B-Instruct-2507 | strict-avg (our peer control) |
-| 81.0 | GPT-4o | unlabeled |
-| 80.2 | GPT-4 | strict-avg (derived) |
-| 74.4 | gemma-2-9b-it | strict-avg |
-| 64.7 | Qwen2.5-3B-Instruct | strict-avg |
-| **55.9** | **GPT-3.5-turbo-1106** | **strict-avg (the anchor)** |
-| 55.0 | Mistral-7B-Instruct-v0.2 | strict-avg |
-| 49.6 | Llama-2-70b-chat | strict-avg |
+| IFEval | Model | Company | Params |
+|--:|:--|:--|:--|
+| 73.9 | Llama-3.2-3B-Instruct | Meta | 3.2B |
+| 64.7 | Qwen2.5-3B-Instruct | Alibaba | 3.0B |
+| 64.2 | Phi-3-medium-4k-instruct | Microsoft | 14B |
+| 60.5 | Yi-1.5-9B-Chat | 01.AI | 8.8B |
+| 57.7 | Phi-3.5-mini-instruct | Microsoft | 3.8B |
+| ~57 | GPT-3.5-turbo-0613 | OpenAI | ~20B |
+| 56.1 | Phi-3-mini-4k-instruct | Microsoft | 3.8B |
+| **55.9** | **GPT-3.5-turbo-1106 (the line)** | OpenAI | ~20B |
+| 55.0 | Mistral-7B-Instruct-v0.2 | Mistral AI | 7.2B |
+| 54.7 | Mistral-7B-Instruct-v0.3 | Mistral AI | 7.2B |
+| 50.4 | gemma-1.1-7b-it | Google | 8.5B |
+| 49.5 | zephyr-7b-beta | Hugging Face | 7.2B |
+| ~49 | GPT-3.5-turbo-0125 | OpenAI | ~20B |
+| 44.3 | Llama-3.1-8B-Instruct | Meta | 8.0B |
+| 43.7 | Qwen1.5-7B-Chat | Alibaba | 7.7B |
+| 39.8 | Llama-2-13b-chat | Meta | 13B |
+| 31.6 | Qwen1.5-4B-Chat | Alibaba | 4.0B |
+
+For scale only: current frontier instruction models sit far above this range (GPT-4o around 81, Llama-3.1-70B around 87). They are a different size and generation, and are not the comparison here.
 
 ## Method and caveats
 

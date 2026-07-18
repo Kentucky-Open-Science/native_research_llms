@@ -39,7 +39,7 @@ The headline metric is **IFEval strict-avg** (instruction-following accuracy, th
 
 IFEval strict-avg and MMLU (5-shot accuracy), as percentages; 8 of these we measured on a common pristine harness on 2026-07-18. **Four university models clear the original-ChatGPT line: Jais 2 (74.9), Marin (70.8), KOS-V4-Instruct (61.6), and YuLan-Mini (61.5).** The two benchmarks rank the set almost independently: KOS-V4 follows instructions well (3rd) but sits near the MMLU chance floor by design (it is an instruction model, not a knowledge model), while Poro-34B is the largest model here yet mid-pack on instructions. Multilingual models (Poro, Minerva, Croissant, Tucano, LLäMmlein) are measured on English and understate their designed capability. (Apertus 75.2 and SmallThinker 85.8 report IFEval in loose or unlabeled formats that are not strict-avg, so they are off the line; \* = Poro MMLU pending.)
 
-The full tables (research institutes, commercial anchors, MMLU, format caveats, and the complete needs-eval list) are on the [rankings page](rankings.md).
+The full tables (research institutes, a GPT-3.5-generation reference set, MMLU, format caveats, and the complete needs-eval list) are on the [rankings page](rankings.md).
 
 ## Universities
 
