@@ -22,20 +22,44 @@ Entries marked **⚠** carry a caveat worth reading before you rely on them, usu
 
 The headline metric is **IFEval strict-avg** (instruction-following accuracy, the Open LLM Leaderboard's "IFEval" column), measured against the original-ChatGPT line, **GPT-3.5-turbo-1106 = 55.9**. It asks one question: *has a from-scratch university model reached what made ChatGPT usable?*
 
-| IFEval | MMLU | University instruction model | Institution |
-|--:|--:|:--|:--|
-| **74.9** | - | Jais-2-70B-Chat | MBZUAI |
-| **70.8** | 61.1 | Marin 8B Instruct | Stanford |
-| **61.6** | 27.8 | KOS-V4-Instruct (3B) | University of Kentucky |
-| **61.5** | 52.8 | YuLan-Mini-Instruct | Renmin |
-| *55.9* | - | *GPT-3.5-turbo-1106 (the line)* | *OpenAI* |
-| 54.1 | 52.5 | LLäMmlein-7B-chat | Würzburg |
-| 51.5 | - | LLM360 K2-Chat | MBZUAI |
-| 34.6 | \* | Poro-34B-chat | U Turku |
-| 21.5 | 40.7 | Minerva-7B-instruct | Sapienza |
-| 19.9 | 24.0 | CroissantLLMChat | CentraleSupélec |
-| 15.0 | 25.9 | Tucano-2b4-Instruct | U Bonn |
-| 6.0 | - | TinyLlama-1.1B-Chat | SUTD |
+### Academic-only
+
+No commercial partner, no corporate-donated compute. University teams on university or public
+compute. **This is the headline ranking.**
+
+| IFEval | MMLU | University instruction model | Institution | Train tokens |
+|--:|--:|:--|:--|--:|
+| **61.6** | 27.8 | **KOS-V4-Instruct (3B)** | University of Kentucky | **180B** |
+| **61.5** | 52.8 | YuLan-Mini-Instruct | Renmin | undisclosed |
+| *55.9* | - | *GPT-3.5-turbo-1106 (the line)* | *OpenAI* | *undisclosed* |
+| 54.1 | 52.5 | LLäMmlein-7B-chat | Würzburg | undisclosed |
+| 21.5 | 40.7 | Minerva-7B-instruct | Sapienza | 210B |
+| 19.9 | 24.0 | CroissantLLMChat | CentraleSupélec | undisclosed |
+| 15.0 | 25.9 | Tucano-2b4-Instruct | U Bonn | 200B |
+| 6.0 | - | TinyLlama-1.1B-Chat | SUTD | 3T |
+
+**Two academic-only models clear the original-ChatGPT line: KOS-V4-Instruct (61.6) and YuLan-Mini
+(61.5)** — a 0.1-point separation, well inside the benchmark's ±2.1-point standard error on 541
+prompts, so they are statistically tied. KOS-V4-Instruct is the only one of the two that publishes a
+training token count (180B, 24 GPUs). Minerva is academic-only but state-resourced (Italy's PNRR/FAIR
+programme, CINECA).
+
+### University-led, commercially backed
+
+Same from-scratch rule, but a commercial partner supplied compute or engineering. **Separated because
+a donated industrial training budget is not a resource a university lab can match**, and ranking the
+two together measures sponsorship as much as method.
+
+| IFEval | MMLU | Model | Institution | Train tokens | Commercial partner |
+|--:|--:|:--|:--|--:|:--|
+| **74.9** | - | Jais-2-70B-Chat | MBZUAI | 2.6T | Inception |
+| **70.8** | 61.1 | Marin 8B Instruct | Stanford | **12.7T** | **Google** (TPU Research Cloud) |
+| 51.5 | - | LLM360 K2-Chat | MBZUAI | undisclosed | Petuum |
+| 34.6 | \* | Poro-34B-chat | U Turku | 1T | Silo AI |
+
+Marin reaches 70.8 on **12.7T tokens — 71x KOS-V4-Instruct's 180B** — with TPUs provided by Google.
+Jais 2 leads on 2.6T with Inception. These are strong results and belong on this site; they are not a
+like-for-like comparison with a lab running 24 of its own GPUs.
 
 IFEval strict-avg and MMLU (5-shot accuracy), as percentages; 8 of these we measured on a common pristine harness on 2026-07-18. **Four university models clear the original-ChatGPT line: Jais 2 (74.9), Marin (70.8), KOS-V4-Instruct (61.6), and YuLan-Mini (61.5).** The two benchmarks rank the set almost independently: KOS-V4 follows instructions well (3rd) but sits near the MMLU chance floor by design (it is an instruction model, not a knowledge model), while Poro-34B is the largest model here yet mid-pack on instructions. Multilingual models (Poro, Minerva, Croissant, Tucano, LLäMmlein) are measured on English and understate their designed capability. (Apertus 75.2 and SmallThinker 85.8 report IFEval in loose or unlabeled formats that are not strict-avg, so they are off the line; \* = Poro MMLU pending.)
 
@@ -47,7 +71,7 @@ The academic list. Led by a university; a commercial co-developer is noted inlin
 
 ### Fully open and reproducible
 
-- [Marin 8B](https://github.com/marin-community/marin) - Stanford CRFM's 8B and 32B models trained on 12T tokens, with the entire research process (code, data, experiments, and failures) documented in the open as it happened.
+- [Marin 8B](https://github.com/marin-community/marin) - Stanford CRFM's 8B and 32B models trained on 12.7T tokens, with the entire research process (code, data, experiments, and failures) documented in the open as it happened. Compute was provided by **Google's TPU Research Cloud** (TPU v4/v5e), per the model card's acknowledgements.
 - [OpenLLaMA](https://huggingface.co/openlm-research/open_llama_7b) - UC Berkeley's OpenLM Research 3B, 7B, and 13B open reproduction of LLaMA, with tokenizer and weights trained from scratch on RedPajama and RefinedWeb.
 - [DCLM-7B](https://github.com/mlfoundations/dclm) - The University of Washington and ML Foundations' 7B, built with Apple, trained on 2.6T tokens as the reference model for the DataComp-LM benchmark. **⚠** Weights ship under Apple's Sample Code License, not an OSI license.
 - [FinGPT](https://turkunlp.org/gpt3-finnish) - TurkuNLP (University of Turku)'s seven monolingual Finnish models from 186M to 13B, each trained on 300B tokens. Unrelated to AI4Finance's identically named financial model.

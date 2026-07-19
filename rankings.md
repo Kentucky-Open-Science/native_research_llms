@@ -30,22 +30,35 @@ Two ground rules. **IFEval is an instruction-following metric**, so every ranked
 
 IFEval strict-avg and MMLU (5-shot), university-led instruction models. Eleven now carry a comparable number; **eight we measured ourselves** on a pristine lm-eval-harness (2026-07-18).
 
-| IFEval | MMLU | Model (instruction-tuned) | University | Source |
-|--:|--:|:--|:--|:--|
-| **74.9** | - | Jais-2-70B-Chat | MBZUAI | card |
-| **70.8** | 61.1 | marin-8b-instruct | Stanford | measured |
-| **61.6** | 27.8 | KOS-V4-Instruct (3B) | University of Kentucky | card (we measured 60.6) |
-| **61.5** | 52.8 | YuLan-Mini-Instruct | Renmin | measured |
-| *55.9* | - | *GPT-3.5-turbo-1106 (the line)* | *OpenAI* | *InternLM2 report* |
-| 54.1 | 52.5 | LLäMmlein-7B-chat | Würzburg | measured |
-| 51.5 | - | LLM360 K2-Chat | MBZUAI | Open LLM Leaderboard |
-| 34.6 | pending | Poro-34B-chat | U Turku | measured |
-| 21.5 | 40.7 | Minerva-7B-instruct | Sapienza | measured |
-| 19.9 | 24.0 | CroissantLLMChat | CentraleSupélec | measured |
-| 15.0 | 25.9 | Tucano-2b4-Instruct | U Bonn | measured |
-| 6.0 | - | TinyLlama-1.1B-Chat | SUTD | Open LLM Leaderboard |
+#### Academic-only — the headline ranking
 
-**Four university models clear the original-ChatGPT line: Jais-2-70B-Chat (74.9), marin-8b-instruct (70.8), KOS-V4-Instruct (61.6), and YuLan-Mini-Instruct (61.5).** KOS-V4 and YuLan-Mini are a statistical tie (a 0.9-point gap against a 2.14-point stderr). The two benchmarks rank the set almost independently: KOS-V4 is 3rd on instruction-following but near the MMLU chance floor, an instruction model by design and not a knowledge model, while Poro-34B is the largest model here (34B) yet places mid-pack, below models a third its size. Multilingual models (Poro, Minerva, Croissant, Tucano, LLäMmlein) are measured on English and understate their designed capability.
+No commercial partner, no corporate-donated compute.
+
+| IFEval | MMLU | Model (instruction-tuned) | University | Train tokens | Source |
+|--:|--:|:--|:--|--:|:--|
+| **61.6** | 27.8 | **KOS-V4-Instruct (3B)** | University of Kentucky | **180B** | card (we measured 60.6) |
+| **61.5** | 52.8 | YuLan-Mini-Instruct | Renmin | undisclosed | measured |
+| *55.9* | - | *GPT-3.5-turbo-1106 (the line)* | *OpenAI* | *undisclosed* | *InternLM2 report* |
+| 54.1 | 52.5 | LLäMmlein-7B-chat | Würzburg | undisclosed | measured |
+| 21.5 | 40.7 | Minerva-7B-instruct | Sapienza | 210B | measured |
+| 19.9 | 24.0 | CroissantLLMChat | CentraleSupélec | undisclosed | measured |
+| 15.0 | 25.9 | Tucano-2b4-Instruct | U Bonn | 200B | measured |
+| 6.0 | - | TinyLlama-1.1B-Chat | SUTD | 3T | Open LLM Leaderboard |
+
+**Two academic-only models clear the original-ChatGPT line: KOS-V4-Instruct (61.6) and YuLan-Mini-Instruct (61.5)** — a statistical tie against the benchmark's 2.14-point stderr on 541 prompts. KOS-V4-Instruct is the only one of the two publishing a training token count (180B, 24 GPUs). Minerva is academic-only but state-resourced (PNRR/FAIR, CINECA). The two benchmarks rank the set almost independently: KOS-V4 leads on instruction-following but sits near the MMLU chance floor, an instruction model by design and not a knowledge model. Multilingual models (Minerva, Croissant, Tucano, LLäMmlein) are measured on English and understate their designed capability.
+
+#### University-led, commercially backed
+
+Same from-scratch rule, but a commercial partner supplied compute or engineering. Separated because a donated industrial training budget is not a resource a university lab can match — ranking these together measures sponsorship as much as method.
+
+| IFEval | MMLU | Model (instruction-tuned) | University | Train tokens | Commercial partner | Source |
+|--:|--:|:--|:--|--:|:--|:--|
+| **74.9** | - | Jais-2-70B-Chat | MBZUAI | 2.6T | Inception | card |
+| **70.8** | 61.1 | marin-8b-instruct | Stanford | **12.7T** | **Google** (TPU Research Cloud) | measured |
+| 51.5 | - | LLM360 K2-Chat | MBZUAI | undisclosed | Petuum | Open LLM Leaderboard |
+| 34.6 | pending | Poro-34B-chat | U Turku | 1T | Silo AI | measured |
+
+Marin reaches 70.8 on **12.7T tokens — 71x KOS-V4-Instruct's 180B** — with TPUs provided by Google's TPU Research Cloud. Jais 2 leads on 2.6T with Inception. Strong results, and not like-for-like against a lab running 24 of its own GPUs.
 
 Reported, but **not** in strict-avg format, so not placed on the line:
 
