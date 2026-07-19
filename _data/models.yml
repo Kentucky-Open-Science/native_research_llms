@@ -35,7 +35,7 @@ meta:
 # =========================================================================
 university:
   # --- fully open and reproducible ---
-  - { name: Marin 8B, inst: "Stanford", theme: fully-open, params: "8B, 32B", weights: open, link: "https://github.com/marin-community/marin" }
+  - { name: Marin 8B, inst: "Stanford", theme: fully-open, params: "8B, 32B", weights: open, partner: "Google (TPU Research Cloud, compute)", tokens: "12.7T", link: "https://github.com/marin-community/marin" }
   - { name: OpenLLaMA, inst: "UC Berkeley (OpenLM Research)", theme: fully-open, params: "3B, 7B, 13B", weights: open, link: "https://huggingface.co/openlm-research/open_llama_7b" }
   - { name: DCLM-7B, inst: "University of Washington, ML Foundations", theme: fully-open, params: "6.9B", weights: open, partner: "Apple", note: "Apple Sample Code License", link: "https://github.com/mlfoundations/dclm" }
   - { name: FinGPT, inst: "TurkuNLP (University of Turku)", theme: fully-open, params: "186M–13B", weights: open, link: "https://turkunlp.org/gpt3-finnish" }
@@ -59,7 +59,7 @@ university:
   - { name: Poro 34B, inst: "TurkuNLP (University of Turku)", theme: multilingual, params: "34B", weights: open, partner: "Silo AI", link: "https://huggingface.co/LumiOpen/Poro-34B" }
   - { name: Viking, inst: "TurkuNLP (University of Turku)", theme: multilingual, params: "7B, 13B, 33B", weights: open, partner: "Silo AI", link: "https://huggingface.co/LumiOpen/Viking-33B" }
   # --- biomedical and clinical ---
-  - { name: KOS-V4, inst: "University of Kentucky", theme: biomedical, params: "3B", weights: open-nc, note: "from-scratch clinical decoder (base KOS-V4-Base, 180B tokens, 24 GPUs); Instruct variant IFEval strict-avg 61.6, clears GPT-3.5; CC BY-NC-SA research-only", link: "https://huggingface.co/collections/Kentucky-Open-Science/kos-v4-llm" }
+  - { name: KOS-V4, inst: "University of Kentucky", theme: biomedical, params: "3B", weights: open-nc, partner: none, tokens: "180B", note: "from-scratch clinical decoder (base KOS-V4-Base, 180B tokens, 24 GPUs); Instruct variant IFEval strict-avg 61.6, clears GPT-3.5; CC BY-NC-SA research-only", link: "https://huggingface.co/collections/Kentucky-Open-Science/kos-v4-llm" }
   - { name: BioMedLM, inst: "Stanford (CRFM)", theme: biomedical, params: "2.7B", weights: open, partner: "MosaicML (compute)", note: "BLOOM RAIL license", link: "https://huggingface.co/stanford-crfm/BioMedLM" }
   - { name: GatorTronGPT, inst: "University of Florida", theme: biomedical, params: "5B, 20B", weights: phi-gate-exception, note: "weights gated for PHI provenance; open proxy is 345M GatorTronS", link: "https://github.com/uf-hobi-informatics-lab/GatorTronGPT" }
   # --- small and efficient ---
