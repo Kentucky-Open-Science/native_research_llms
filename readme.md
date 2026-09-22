@@ -29,7 +29,8 @@ compute. **This is the headline ranking.**
 
 | IFEval | MMLU | University instruction model | Institution | Train tokens |
 |--:|--:|:--|:--|--:|
-| **61.6** | 27.8 | **KOS-V4-Instruct (3B)** | University of Kentucky | **180B** |
+| **72.2** | 45.1 | **KOS-V5-Instruct (3.7B)** | University of Kentucky | **235B** |
+| 61.6 | 27.8 | KOS-V4-Instruct (3B) | University of Kentucky | 180B |
 | **61.5** | 52.8 | YuLan-Mini-Instruct | Renmin | undisclosed |
 | *55.9* | - | *GPT-3.5-turbo-1106 (the line)* | *OpenAI* | *undisclosed* |
 | 54.1 | 52.5 | LLäMmlein-7B-chat | Würzburg | undisclosed |
@@ -38,10 +39,11 @@ compute. **This is the headline ranking.**
 | 15.0 | 25.9 | Tucano-2b4-Instruct | U Bonn | 200B |
 | 6.0 | - | TinyLlama-1.1B-Chat | SUTD | 3T |
 
-**Two academic-only models clear the original-ChatGPT line: KOS-V4-Instruct (61.6) and YuLan-Mini
-(61.5)** — a 0.1-point separation, well inside the benchmark's ±2.1-point standard error on 541
-prompts, so they are statistically tied. KOS-V4-Instruct is the only one of the two that publishes a
-training token count (180B, 24 GPUs). Minerva is academic-only but state-resourced (Italy's PNRR/FAIR
+**Three academic-only models clear the original-ChatGPT line: KOS-V5-Instruct (72.2), KOS-V4-Instruct (61.6), and YuLan-Mini
+(61.5)** — KOS-V5-Instruct clears the line by 16.3 points on 235B tokens; KOS-V4-Instruct and YuLan-Mini remain separated by
+0.1 points, well inside the benchmark's ±2.1-point standard error on 541
+prompts, so they are statistically tied. KOS-V5-Instruct post-trains with two GRPO legs against the official IFEval and BFCL
+checkers. Minerva is academic-only but state-resourced (Italy's PNRR/FAIR
 programme, CINECA).
 
 ### University-led, commercially backed
@@ -58,10 +60,11 @@ two together measures sponsorship as much as method.
 | 34.6 | \* | Poro-34B-chat | U Turku | 1T | Silo AI |
 
 Marin reaches 70.8 on **12.7T tokens — 71x KOS-V4-Instruct's 180B** — with TPUs provided by Google.
-Jais 2 leads on 2.6T with Inception. These are strong results and belong on this site; they are not a
-like-for-like comparison with a lab running 24 of its own GPUs.
+Jais 2 leads the table on 2.6T with Inception. **KOS-V5-Instruct's 72.2 clears both on 235B tokens** —
+54x less data than Marin, 11x less than Jais 2. These are strong results and belong on this site; they are not a
+like-for-like comparison with a lab running its own GPU cluster.
 
-IFEval strict-avg and MMLU (5-shot accuracy), as percentages; 8 of these we measured on a common pristine harness on 2026-07-18. **Four university models clear the original-ChatGPT line: Jais 2 (74.9), Marin (70.8), KOS-V4-Instruct (61.6), and YuLan-Mini (61.5).** The two benchmarks rank the set almost independently: KOS-V4 follows instructions well (3rd) but sits near the MMLU chance floor by design (it is an instruction model, not a knowledge model), while Poro-34B is the largest model here yet mid-pack on instructions. Multilingual models (Poro, Minerva, Croissant, Tucano, LLäMmlein) are measured on English and understate their designed capability. (Apertus 75.2 and SmallThinker 85.8 report IFEval in loose or unlabeled formats that are not strict-avg, so they are off the line; \* = Poro MMLU pending.)
+IFEval strict-avg and MMLU (5-shot accuracy), as percentages; 8 of these we measured on a common pristine harness on 2026-07-18. **Five university models clear the original-ChatGPT line: Jais 2 (74.9), KOS-V5-Instruct (72.2), Marin (70.8), KOS-V4-Instruct (61.6), and YuLan-Mini (61.5).** The two benchmarks rank the set almost independently: KOS-V5-Instruct follows instructions well (2nd) at a 45.1 MMLU, while KOS-V4 sits near the MMLU chance floor by design (it is an instruction model, not a knowledge model), and Poro-34B is the largest model here yet mid-pack on instructions. Multilingual models (Poro, Minerva, Croissant, Tucano, LLäMmlein) are measured on English and understate their designed capability. (Apertus 75.2 and SmallThinker 85.8 report IFEval in loose or unlabeled formats that are not strict-avg, so they are off the line; \* = Poro MMLU pending.)
 
 The full tables (research institutes, a GPT-3.5-generation reference set, MMLU, format caveats, and the complete needs-eval list) are on the [rankings page](rankings.md).
 
@@ -100,6 +103,7 @@ The academic list. Led by a university; a commercial co-developer is noted inlin
 ### Biomedical and clinical
 
 - [KOS-V4](https://huggingface.co/collections/Kentucky-Open-Science/kos-v4-llm) - The University of Kentucky College of Medicine's 3B decoder trained from scratch on 180B tokens of medical text (base KOS-V4-Base, 24 GPUs). Its GRPO-tuned Instruct variant scores 61.6 IFEval strict-avg, clearing the original GPT-3.5-turbo. **⚠** Non-commercial, research-only (CC BY-NC-SA).
+- [KOS-V5](https://huggingface.co/collections/Kentucky-Open-Science/kos-v5-llm) - The University of Kentucky College of Medicine and University of Louisville's 3.7B decoder trained from scratch on 235B tokens across a 54-source medical corpus (base KOS-V5-Base). Its Instruct variant — SFT plus two GRPO legs against the official IFEval and BFCL checkers — scores 72.2 IFEval strict-avg and 45.1 MMLU, with PubMedQA 70.6 and BFCL tool-calling at 85.0/84.0/80.5; a companion LoRA adapter (KOS-V5-Retriever) turns the frozen weights into a dense retriever at BEIR SciFact NDCG@10 0.70 zero-shot. **⚠** Apache-2.0 weights, research-use-only per the model card (no clinical or commercial use).
 - [BioMedLM](https://huggingface.co/stanford-crfm/BioMedLM) - Stanford CRFM's 2.7B trained solely on PubMed with a purpose-built 28,896-token biomedical vocabulary, small enough to deploy privately. **⚠** The BLOOM RAIL license forbids using it to provide medical advice.
 - [GatorTronGPT](https://github.com/uf-hobi-informatics-lab/GatorTronGPT) - University of Florida's 5B and 20B trained on 277B words including 82B words of UF Health clinical notes. **⚠** Weights gated behind UF licensing because of PHI provenance, a documented data-protection exception; the open artifact is the 345M GatorTronS.
 

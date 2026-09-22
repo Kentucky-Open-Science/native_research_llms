@@ -28,7 +28,7 @@ Two ground rules. **IFEval is an instruction-following metric**, so every ranked
 
 ## Universities
 
-IFEval strict-avg and MMLU (5-shot), university-led instruction models. Eleven now carry a comparable number; **eight we measured ourselves** on a pristine lm-eval-harness (2026-07-18).
+IFEval strict-avg and MMLU (5-shot), university-led instruction models. Twelve now carry a comparable number; **eight we measured ourselves** on a pristine lm-eval-harness (2026-07-18).
 
 #### Academic-only — the headline ranking
 
@@ -36,7 +36,8 @@ No commercial partner, no corporate-donated compute.
 
 | IFEval | MMLU | Model (instruction-tuned) | University | Train tokens | Source |
 |--:|--:|:--|:--|--:|:--|
-| **61.6** | 27.8 | **KOS-V4-Instruct (3B)** | University of Kentucky | **180B** | card (we measured 60.6) |
+| **72.2** | 45.1 | **KOS-V5-Instruct (3.7B)** | University of Kentucky | **235B** | card |
+| 61.6 | 27.8 | KOS-V4-Instruct (3B) | University of Kentucky | 180B | card (we measured 60.6) |
 | **61.5** | 52.8 | YuLan-Mini-Instruct | Renmin | undisclosed | measured |
 | *55.9* | - | *GPT-3.5-turbo-1106 (the line)* | *OpenAI* | *undisclosed* | *InternLM2 report* |
 | 54.1 | 52.5 | LLäMmlein-7B-chat | Würzburg | undisclosed | measured |
@@ -45,7 +46,7 @@ No commercial partner, no corporate-donated compute.
 | 15.0 | 25.9 | Tucano-2b4-Instruct | U Bonn | 200B | measured |
 | 6.0 | - | TinyLlama-1.1B-Chat | SUTD | 3T | Open LLM Leaderboard |
 
-**Two academic-only models clear the original-ChatGPT line: KOS-V4-Instruct (61.6) and YuLan-Mini-Instruct (61.5)** — a statistical tie against the benchmark's 2.14-point stderr on 541 prompts. KOS-V4-Instruct is the only one of the two publishing a training token count (180B, 24 GPUs). Minerva is academic-only but state-resourced (PNRR/FAIR, CINECA). The two benchmarks rank the set almost independently: KOS-V4 leads on instruction-following but sits near the MMLU chance floor, an instruction model by design and not a knowledge model. Multilingual models (Minerva, Croissant, Tucano, LLäMmlein) are measured on English and understate their designed capability.
+**Three academic-only models clear the original-ChatGPT line: KOS-V5-Instruct (72.2), KOS-V4-Instruct (61.6), and YuLan-Mini-Instruct (61.5)** — KOS-V5-Instruct clears the line by 16.3 points on 235B tokens; KOS-V4-Instruct and YuLan-Mini-Instruct remain a statistical tie against the benchmark's 2.14-point stderr on 541 prompts. KOS-V5-Instruct post-trains with two GRPO legs against the official IFEval and BFCL checkers. Minerva is academic-only but state-resourced (PNRR/FAIR, CINECA). The two benchmarks rank the set almost independently: KOS-V5-Instruct leads on instruction-following at 45.1 MMLU, while KOS-V4 sits near the MMLU chance floor, an instruction model by design and not a knowledge model. Multilingual models (Minerva, Croissant, Tucano, LLäMmlein) are measured on English and understate their designed capability.
 
 #### University-led, commercially backed
 
@@ -58,7 +59,7 @@ Same from-scratch rule, but a commercial partner supplied compute or engineering
 | 51.5 | - | LLM360 K2-Chat | MBZUAI | undisclosed | Petuum | Open LLM Leaderboard |
 | 34.6 | pending | Poro-34B-chat | U Turku | 1T | Silo AI | measured |
 
-Marin reaches 70.8 on **12.7T tokens — 71x KOS-V4-Instruct's 180B** — with TPUs provided by Google's TPU Research Cloud. Jais 2 leads on 2.6T with Inception. Strong results, and not like-for-like against a lab running 24 of its own GPUs.
+Marin reaches 70.8 on **12.7T tokens — 71x KOS-V4-Instruct's 180B** — with TPUs provided by Google's TPU Research Cloud. Jais 2 leads the table on 2.6T with Inception. **KOS-V5-Instruct's 72.2 clears both on 235B tokens** — 54x less data than Marin, 11x less than Jais 2. Strong results, and not like-for-like against a lab running its own GPU cluster.
 
 Reported, but **not** in strict-avg format, so not placed on the line:
 
@@ -123,5 +124,5 @@ For scale only: current frontier instruction models sit far above this range (GP
 - **Measured rows** (Source = "measured") are from a pristine EleutherAI lm-evaluation-harness 0.4.12 run (univ-baseline, 2026-07-18): stock `ifeval` (google/IFEval, 541 prompts, 0-shot, greedy, chat template applied) and stock `mmlu` (cais/mmlu, 57 subjects, 5-shot, `acc`). Two controls passed: Qwen3-4B reproduced within 1.5 points, and KOS-V4's MMLU reproduced to four decimals across two harness builds.
 - **Measurement error.** IFEval prompt-strict stderr is ±2.14 points on 541 prompts, so differences under about 2 points are not distinguishable (KOS-V4 and YuLan-Mini are a tie by this measure).
 - **Multilingual models are scored on English.** Poro (Finnish), Minerva (Italian), Croissant (French), Tucano (Portuguese), and LLäMmlein (German) are measured on English IFEval and MMLU; the scores understate designed capability and are not a general quality ranking.
-- **Other open-model rows** come from the Open LLM Leaderboard v2 "IFEval" column (strict-avg); card-derived rows (Jais 2, KOS-V4) compute strict-avg from the two strict sub-metrics. **KOS-V4-Instruct** is listed at its card value 61.6; our own pristine-harness run measured 60.63.
+- **Other open-model rows** come from the Open LLM Leaderboard v2 "IFEval" column (strict-avg); card-derived rows (Jais 2, KOS-V4, KOS-V5) compute strict-avg from the two strict sub-metrics. **KOS-V4-Instruct** is listed at its card value 61.6; our own pristine-harness run measured 60.63. **KOS-V5-Instruct** is listed at its card value 72.2 (prompt-strict 67.28 / inst-strict 77.10, 2026-07-29 card); not yet in our pristine-harness run.
 - **GPT-3.5-turbo-1106** strict sub-metrics (50.5 / 61.2) are from the InternLM2 report (arXiv:2403.17297); GPT-3.5 snapshots differ (0613 around 57, 1106 = 55.9, 0125 around 49), so the snapshot is named. **GPT-4o's 81** is OpenAI's single figure with no strict/loose breakdown, so it is not verified strict-avg.
