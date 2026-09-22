@@ -29,7 +29,7 @@ compute. **This is the headline ranking.**
 
 | IFEval | MMLU | University instruction model | Institution | Train tokens |
 |--:|--:|:--|:--|--:|
-| **72.2** | 45.1 | **KOS-V5-Instruct (3.7B)** | University of Kentucky | **235B** |
+| **72.2** | 45.1 | **KOS-V5-Instruct (3.7B)** | University of Louisville / University of Kentucky | **235B** |
 | 61.6 | 27.8 | KOS-V4-Instruct (3B) | University of Kentucky | 180B |
 | **61.5** | 52.8 | YuLan-Mini-Instruct | Renmin | undisclosed |
 | *55.9* | - | *GPT-3.5-turbo-1106 (the line)* | *OpenAI* | *undisclosed* |
@@ -103,7 +103,7 @@ The academic list. Led by a university; a commercial co-developer is noted inlin
 ### Biomedical and clinical
 
 - [KOS-V4](https://huggingface.co/collections/Kentucky-Open-Science/kos-v4-llm) - The University of Kentucky College of Medicine's 3B decoder trained from scratch on 180B tokens of medical text (base KOS-V4-Base, 24 GPUs). Its GRPO-tuned Instruct variant scores 61.6 IFEval strict-avg, clearing the original GPT-3.5-turbo. **⚠** Non-commercial, research-only (CC BY-NC-SA).
-- [KOS-V5](https://huggingface.co/collections/Kentucky-Open-Science/kos-v5-llm) - The University of Kentucky College of Medicine and University of Louisville's 3.7B decoder trained from scratch on 235B tokens across a 54-source medical corpus (base KOS-V5-Base). Its Instruct variant — SFT plus two GRPO legs against the official IFEval and BFCL checkers — scores 72.2 IFEval strict-avg and 45.1 MMLU, with PubMedQA 70.6 and BFCL tool-calling at 85.0/84.0/80.5; a companion LoRA adapter (KOS-V5-Retriever) turns the frozen weights into a dense retriever at BEIR SciFact NDCG@10 0.70 zero-shot. **⚠** Apache-2.0 weights, research-use-only per the model card (no clinical or commercial use).
+- [KOS-V5](https://huggingface.co/collections/Kentucky-Open-Science/kos-v5-llm) - The University of Louisville and University of Kentucky's 3.7B decoder trained from scratch on 235B tokens across a 54-source medical corpus (base KOS-V5-Base). Its Instruct variant — SFT plus two GRPO legs against the official IFEval and BFCL checkers — scores 72.2 IFEval strict-avg and 45.1 MMLU, with PubMedQA 70.6 and BFCL tool-calling at 85.0/84.0/80.5; a companion LoRA adapter (KOS-V5-Retriever) turns the frozen weights into a dense retriever at BEIR SciFact NDCG@10 0.70 zero-shot. **⚠** Apache-2.0 weights, research-use-only per the model card (no clinical or commercial use).
 - [BioMedLM](https://huggingface.co/stanford-crfm/BioMedLM) - Stanford CRFM's 2.7B trained solely on PubMed with a purpose-built 28,896-token biomedical vocabulary, small enough to deploy privately. **⚠** The BLOOM RAIL license forbids using it to provide medical advice.
 - [GatorTronGPT](https://github.com/uf-hobi-informatics-lab/GatorTronGPT) - University of Florida's 5B and 20B trained on 277B words including 82B words of UF Health clinical notes. **⚠** Weights gated behind UF licensing because of PHI provenance, a documented data-protection exception; the open artifact is the 345M GatorTronS.
 

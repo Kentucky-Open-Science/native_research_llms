@@ -36,7 +36,7 @@ No commercial partner, no corporate-donated compute.
 
 | IFEval | MMLU | Model (instruction-tuned) | University | Train tokens | Source |
 |--:|--:|:--|:--|--:|:--|
-| **72.2** | 45.1 | **KOS-V5-Instruct (3.7B)** | University of Kentucky | **235B** | card |
+| **72.2** | 45.1 | **KOS-V5-Instruct (3.7B)** | University of Louisville / University of Kentucky | **235B** | card |
 | 61.6 | 27.8 | KOS-V4-Instruct (3B) | University of Kentucky | 180B | card (we measured 60.6) |
 | **61.5** | 52.8 | YuLan-Mini-Instruct | Renmin | undisclosed | measured |
 | *55.9* | - | *GPT-3.5-turbo-1106 (the line)* | *OpenAI* | *undisclosed* | *InternLM2 report* |
